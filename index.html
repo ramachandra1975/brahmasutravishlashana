@@ -1,0 +1,1508 @@
+<!DOCTYPE html>
+<html lang="sa-IN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ब्रह्मसूत्र — शब्द-सन्धि-मातृका-न्यास विश्लेषणम् | Brahmasūtra Phonemic & Mātṛkā Nyāsa Analysis</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Noto+Serif+Devanagari:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --parchment: #fdf6e3;
+    --parchment-dark: #f5ecd0;
+    --parchment-mid: #ede0c0;
+    --crimson: #8b1a1a;
+    --crimson-light: #a52020;
+    --crimson-dark: #5c0e0e;
+    --gold: #b8860b;
+    --gold-light: #d4a017;
+    --gold-pale: #f0d070;
+    --ink: #2a1a0a;
+    --ink-mid: #3d2810;
+    --ink-light: #5a3e20;
+    --muted: #7a6040;
+    --accent-teal: #1a5050;
+    --accent-blue: #1a2850;
+    --border-ornate: #c8a030;
+    --section-bg: #fdf0d0;
+    --highlight-bg: #fff8e8;
+    --phoneme-bg: #f0e8d0;
+    --matrika-bg: #e8f0e8;
+    --sandhi-bg: #e8e8f8;
+    --samasa-bg: #f8e8e8;
+    --body-bg: #ecdcba;
+    --shadow: rgba(80,40,0,0.15);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'EB Garamond', 'Cormorant Garamond', Georgia, serif;
+    background-color: var(--body-bg);
+    background-image: 
+      radial-gradient(ellipse at 20% 20%, rgba(180,140,60,0.08) 0%, transparent 60%),
+      radial-gradient(ellipse at 80% 80%, rgba(140,80,20,0.06) 0%, transparent 60%);
+    color: var(--ink);
+    font-size: 17px;
+    line-height: 1.75;
+  }
+
+  /* ── Page container ── */
+  .manuscript {
+    max-width: 920px;
+    margin: 2rem auto;
+    background: var(--parchment);
+    border: 2px solid var(--border-ornate);
+    box-shadow: 0 8px 40px var(--shadow), 0 0 0 6px rgba(180,140,60,0.1);
+    padding: 0;
+    position: relative;
+  }
+
+  /* ── Ornate border inset ── */
+  .manuscript::before {
+    content: '';
+    position: absolute;
+    inset: 8px;
+    border: 1px solid var(--gold-pale);
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  /* ── Header ── */
+  .ms-header {
+    background: linear-gradient(135deg, #3d1a00 0%, #5c2c00 40%, #3d1a00 100%);
+    padding: 3rem 2.5rem 2.5rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .ms-header::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, transparent, var(--gold-light), var(--gold-pale), var(--gold-light), transparent);
+  }
+
+  .ms-header .om-symbol {
+    font-family: 'Noto Serif Devanagari', serif;
+    font-size: 3rem;
+    color: var(--gold-pale);
+    display: block;
+    letter-spacing: 0.1em;
+    margin-bottom: 0.5rem;
+    text-shadow: 0 2px 12px rgba(255,200,50,0.4);
+  }
+
+  .ms-header .title-sa {
+    font-family: 'Noto Serif Devanagari', serif;
+    font-size: 1.6rem;
+    color: var(--gold-pale);
+    line-height: 1.5;
+    margin-bottom: 0.6rem;
+    font-weight: 600;
+  }
+
+  .ms-header .title-en {
+    font-family: 'Cinzel', serif;
+    font-size: 1.1rem;
+    color: rgba(240,210,120,0.85);
+    letter-spacing: 0.12em;
+    font-weight: 400;
+    margin-bottom: 1.2rem;
+  }
+
+  .ms-header .subtitle {
+    font-family: 'EB Garamond', serif;
+    font-size: 1rem;
+    color: rgba(220,190,100,0.75);
+    font-style: italic;
+    line-height: 1.6;
+  }
+
+  /* ── Body padding ── */
+  .ms-body {
+    padding: 2.5rem 3rem 3rem;
+  }
+
+  /* ── Section heading ── */
+  h1.sec-head {
+    font-family: 'Cinzel', serif;
+    font-size: 1.35rem;
+    color: var(--crimson-dark);
+    border-bottom: 2px solid var(--border-ornate);
+    padding-bottom: 0.4rem;
+    margin: 2.5rem 0 1.2rem;
+    letter-spacing: 0.06em;
+    font-weight: 700;
+  }
+
+  h2.sec-subhead {
+    font-family: 'Cinzel', serif;
+    font-size: 1.1rem;
+    color: var(--crimson);
+    margin: 2rem 0 0.8rem;
+    letter-spacing: 0.05em;
+    font-weight: 600;
+    padding-left: 0.6rem;
+    border-left: 3px solid var(--gold);
+  }
+
+  h3.sec-minor {
+    font-family: 'EB Garamond', serif;
+    font-size: 1.05rem;
+    color: var(--ink-mid);
+    font-weight: 600;
+    margin: 1.4rem 0 0.5rem;
+    font-style: italic;
+  }
+
+  /* ── Sūtra display block ── */
+  .sutra-block {
+    background: var(--section-bg);
+    border: 1px solid var(--parchment-mid);
+    border-left: 4px solid var(--gold);
+    border-radius: 4px;
+    padding: 1rem 1.25rem;
+    margin: 1rem 0 0.4rem;
+    position: relative;
+  }
+
+  .sutra-block .sutra-num {
+    font-family: 'Cinzel', serif;
+    font-size: 0.78rem;
+    color: var(--muted);
+    letter-spacing: 0.08em;
+    margin-bottom: 0.3rem;
+  }
+
+  .sutra-block .sutra-sa {
+    font-family: 'Noto Serif Devanagari', serif;
+    font-size: 1.25rem;
+    color: var(--crimson-dark);
+    line-height: 1.6;
+    font-weight: 500;
+  }
+
+  .sutra-block .sutra-trans {
+    font-family: 'EB Garamond', serif;
+    font-style: italic;
+    font-size: 0.95rem;
+    color: var(--ink-light);
+    margin-top: 0.3rem;
+  }
+
+  /* ── Phonemic analysis card ── */
+  .phoneme-card {
+    background: var(--phoneme-bg);
+    border: 1px solid #d4c090;
+    border-radius: 6px;
+    padding: 1.1rem 1.3rem;
+    margin: 1rem 0;
+  }
+
+  .phoneme-card .card-title {
+    font-family: 'Cinzel', serif;
+    font-size: 0.82rem;
+    color: var(--gold);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 0.6rem;
+  }
+
+  /* ── Mātṛkā card (green tint) ── */
+  .matrika-card {
+    background: var(--matrika-bg);
+    border: 1px solid #90b890;
+    border-radius: 6px;
+    padding: 1.1rem 1.3rem;
+    margin: 1rem 0;
+  }
+
+  .matrika-card .card-title {
+    font-family: 'Cinzel', serif;
+    font-size: 0.82rem;
+    color: #2a6040;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 0.6rem;
+  }
+
+  /* ── Sandhi card (blue tint) ── */
+  .sandhi-card {
+    background: var(--sandhi-bg);
+    border: 1px solid #9090c8;
+    border-radius: 6px;
+    padding: 1.1rem 1.3rem;
+    margin: 1rem 0;
+  }
+
+  .sandhi-card .card-title {
+    font-family: 'Cinzel', serif;
+    font-size: 0.82rem;
+    color: #2a2a80;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 0.6rem;
+  }
+
+  /* ── Samāsa card (red tint) ── */
+  .samasa-card {
+    background: var(--samasa-bg);
+    border: 1px solid #c89090;
+    border-radius: 6px;
+    padding: 1.1rem 1.3rem;
+    margin: 1rem 0;
+  }
+
+  .samasa-card .card-title {
+    font-family: 'Cinzel', serif;
+    font-size: 0.82rem;
+    color: #802020;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 0.6rem;
+  }
+
+  /* ── Inline Sanskrit highlight ── */
+  .sa {
+    font-family: 'Noto Serif Devanagari', serif;
+    font-size: 1.05em;
+    color: var(--crimson-dark);
+    font-weight: 500;
+  }
+
+  .sa-trans {
+    font-family: 'EB Garamond', serif;
+    font-style: italic;
+    color: var(--ink-light);
+  }
+
+  .phoneme-tag {
+    display: inline-block;
+    background: var(--gold-pale);
+    color: var(--crimson-dark);
+    font-family: 'Noto Serif Devanagari', serif;
+    font-size: 1.1em;
+    font-weight: 600;
+    padding: 0.05em 0.4em;
+    border-radius: 3px;
+    border: 1px solid var(--border-ornate);
+    margin: 0.1em 0.15em;
+  }
+
+  .body-part-tag {
+    display: inline-block;
+    background: #e8d0f0;
+    color: #3a0060;
+    font-family: 'EB Garamond', serif;
+    font-size: 0.9em;
+    font-style: italic;
+    padding: 0.05em 0.5em;
+    border-radius: 3px;
+    border: 1px solid #b090c0;
+    margin: 0.1em 0.15em;
+  }
+
+  /* ── Table ── */
+  table.analysis-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.92rem;
+    margin: 1rem 0;
+  }
+
+  table.analysis-table th {
+    font-family: 'Cinzel', serif;
+    font-weight: 600;
+    font-size: 0.78rem;
+    letter-spacing: 0.08em;
+    color: var(--parchment);
+    background: var(--crimson-dark);
+    padding: 0.55rem 0.8rem;
+    text-align: left;
+  }
+
+  table.analysis-table td {
+    padding: 0.55rem 0.8rem;
+    border-bottom: 1px solid var(--parchment-mid);
+    vertical-align: top;
+    line-height: 1.55;
+  }
+
+  table.analysis-table tr:nth-child(even) td {
+    background: rgba(180,140,60,0.05);
+  }
+
+  table.analysis-table tr:hover td {
+    background: rgba(180,140,60,0.1);
+  }
+
+  /* ── Pull quote / emphasis block ── */
+  .pull-quote {
+    border-left: 4px solid var(--crimson);
+    padding: 0.8rem 1.2rem;
+    margin: 1.2rem 0;
+    background: var(--highlight-bg);
+    font-style: italic;
+    color: var(--ink-mid);
+    font-size: 1.02rem;
+    line-height: 1.7;
+  }
+
+  /* ── Divider ornament ── */
+  .ornament-div {
+    text-align: center;
+    color: var(--gold);
+    font-size: 1.4rem;
+    margin: 2rem 0;
+    letter-spacing: 0.5em;
+    opacity: 0.7;
+  }
+
+  /* ── Footer ── */
+  .ms-footer {
+    background: var(--parchment-dark);
+    border-top: 2px solid var(--border-ornate);
+    padding: 1.5rem 3rem;
+    text-align: center;
+    font-size: 0.88rem;
+    color: var(--muted);
+    font-style: italic;
+  }
+
+  .ms-footer .sa {
+    font-size: 1.1em;
+  }
+
+  /* ── Page number simulation ── */
+  .page-ref {
+    float: right;
+    font-family: 'Cinzel', serif;
+    font-size: 0.72rem;
+    color: var(--muted);
+    letter-spacing: 0.05em;
+    margin-top: 0.2rem;
+  }
+
+  /* ── TOC ── */
+  .toc-block {
+    background: var(--parchment-dark);
+    border: 1px solid var(--parchment-mid);
+    border-radius: 4px;
+    padding: 1.4rem 1.8rem;
+    margin: 1.5rem 0 2rem;
+    column-count: 2;
+    column-gap: 2rem;
+  }
+
+  .toc-block .toc-entry {
+    font-size: 0.88rem;
+    line-height: 1.9;
+    color: var(--ink-mid);
+    break-inside: avoid;
+    padding-left: 0.8rem;
+    text-indent: -0.8rem;
+  }
+
+  .toc-block .toc-entry a {
+    color: var(--crimson);
+    text-decoration: none;
+  }
+
+  .toc-block .toc-entry a:hover {
+    text-decoration: underline;
+  }
+
+  .toc-section {
+    font-family: 'Cinzel', serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-top: 0.8rem;
+    margin-bottom: 0.2rem;
+    break-after: avoid;
+  }
+
+  /* ── Grid for phoneme pairs ── */
+  .phoneme-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 0.6rem;
+    margin: 0.8rem 0;
+  }
+
+  .phoneme-cell {
+    background: var(--parchment-dark);
+    border: 1px solid var(--parchment-mid);
+    border-radius: 4px;
+    padding: 0.6rem 0.8rem;
+    text-align: center;
+  }
+
+  .phoneme-cell .devanagari {
+    font-family: 'Noto Serif Devanagari', serif;
+    font-size: 1.6rem;
+    color: var(--crimson-dark);
+    display: block;
+    font-weight: 600;
+    line-height: 1.3;
+  }
+
+  .phoneme-cell .iast {
+    font-family: 'EB Garamond', serif;
+    font-size: 0.82rem;
+    color: var(--muted);
+    font-style: italic;
+  }
+
+  .phoneme-cell .nyasa-loc {
+    font-size: 0.75rem;
+    color: var(--accent-teal);
+    font-family: 'EB Garamond', serif;
+    margin-top: 0.2rem;
+  }
+
+  @media (max-width: 700px) {
+    .ms-body { padding: 1.5rem 1.2rem; }
+    .toc-block { column-count: 1; }
+    table.analysis-table { font-size: 0.82rem; }
+  }
+
+  @media print {
+    body { background: white; }
+    .manuscript { box-shadow: none; border: 1px solid #aaa; margin: 0; max-width: 100%; }
+    .ms-header { background: #3d1a00 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  }
+</style>
+</head>
+<body>
+
+<article class="manuscript">
+
+  <!-- ══════════════════════════════════════
+       HEADER
+  ══════════════════════════════════════ -->
+  <header class="ms-header">
+    <span class="om-symbol">ॐ</span>
+    <p class="title-sa">ब्रह्मसूत्र — शब्द-सन्धि-समास-मातृका-न्यास विश्लेषणम्</p>
+    <p class="title-en">Brahmasūtra · Phonemic, Sandhi, Samāsa &amp; Mātṛkā Nyāsa Analysis</p>
+    <p class="subtitle">
+      प्रथमाध्याय &amp; द्वितीयाध्याय — पूर्णविश्लेषणम् · A Comprehensive Study of Sound, Sandhi, and Mātṛkā Resonance<br>
+      in the Sūtras of Bādarāyaṇa as they Purify Body, Mind &amp; Soul
+    </p>
+  </header>
+
+  <div class="ms-body">
+
+    <!-- TABLE OF CONTENTS -->
+    <h1 class="sec-head" id="toc">विषयसूची · Table of Contents</h1>
+    <div class="toc-block">
+      <div class="toc-section">Prolegomena</div>
+      <div class="toc-entry"><a href="#intro">§1 · Introduction: Śabda as Brahman in the Sūtra Tradition</a></div>
+      <div class="toc-entry"><a href="#matrika-frame">§2 · The Mātṛkā Nyāsa Framework</a></div>
+      <div class="toc-entry"><a href="#sandhi-theory">§3 · Sandhi, Samāsa &amp; the Acoustic Body</a></div>
+      <div class="toc-section">Adhyāya I · Four Pādas</div>
+      <div class="toc-entry"><a href="#a1p1">§4 · Adhyāya I, Pāda 1 — Sūtras 1.1.1–1.1.31</a></div>
+      <div class="toc-entry"><a href="#a1p2">§5 · Adhyāya I, Pāda 2 — Sūtras 1.2.1–1.2.32</a></div>
+      <div class="toc-entry"><a href="#a1p3">§6 · Adhyāya I, Pāda 3 — Sūtras 1.3.1–1.3.43</a></div>
+      <div class="toc-entry"><a href="#a1p4">§7 · Adhyāya I, Pāda 4 — Sūtras 1.4.1–1.4.29</a></div>
+      <div class="toc-section">Adhyāya II · Four Pādas</div>
+      <div class="toc-entry"><a href="#a2p1">§8 · Adhyāya II, Pāda 1 — Sūtras 2.1.1–2.1.38</a></div>
+      <div class="toc-entry"><a href="#a2p2">§9 · Adhyāya II, Pāda 2 — Sūtras 2.2.1–2.2.45</a></div>
+      <div class="toc-entry"><a href="#a2p3">§10 · Adhyāya II, Pāda 3 — Sūtras 2.3.1–2.3.53</a></div>
+      <div class="toc-entry"><a href="#a2p4">§11 · Adhyāya II, Pāda 4 — Sūtras 2.4.1–2.4.23</a></div>
+      <div class="toc-section">Synthesis</div>
+      <div class="toc-entry"><a href="#master-table">§12 · Master Reference Table: Phonemes → Body Loci → Mātṛkā</a></div>
+      <div class="toc-entry"><a href="#purification">§13 · Mechanism of Internal Purification</a></div>
+      <div class="toc-entry"><a href="#conclusion">§14 · Conclusion</a></div>
+    </div>
+
+    <!-- ══════════════════════════════════════
+         §1 · INTRODUCTION
+    ══════════════════════════════════════ -->
+    <section id="intro">
+      <h1 class="sec-head">§1 · Introduction: Śabda as Brahman in the Sūtra Tradition
+        <span class="page-ref">p. 1</span></h1>
+
+      <p>The <span class="sa">ब्रह्मसूत्राणि</span> of Bādarāyaṇa (Veda Vyāsa) are universally approached through the lens of Vedāntic philosophy — as a systematic investigation of the nature of Brahman, the jīva, the jagat, and mokṣa. Yet encoded within the very texture of each sūtra, at the level of phoneme, sandhi junction, vowel quality, and compound formation, lies a second, equally rigorous structure: one that directly interfaces with the Tantric science of <span class="sa">मातृका-न्यास</span> (Mātṛkā Nyāsa), the practice by which the 51 (or 50) phonemes of Sanskrit are ritually installed in corresponding zones of the physical body, the subtle body, and ultimately the consciousness itself.</p>
+
+      <div class="pull-quote">
+        The Brahmasūtras are not merely propositions about Brahman — they <em>are</em> Brahman vibrating in the form of śabda. Every sūtra is simultaneously a logical argument, a sonic field, and a nyāsa prescription.
+      </div>
+
+      <p>The fundamental axiom underlying this analysis is expressed in the <span class="sa">पाणिनीयशिक्षा</span> and elaborated in the <span class="sa">मातृकानिर्णय</span> traditions: that the 51 mātṛkās — the phonemic mothers — are the constitutive units not only of Sanskrit language but of the entire phenomenal universe. Each phoneme vibrates at a specific frequency, activates a corresponding cakra or bodily region, and when articulated consciously (with intent, prāṇa, and meditative attention) produces direct biochemical, neurological, and prāṇamaya effects within the practitioner.</p>
+
+      <p>The Brahmasūtras, as composed in the terse sūtra style, deploy three key phonemic devices that bear on this practice:</p>
+
+      <ol style="margin: 0.8rem 0 0.8rem 1.5rem; line-height: 2;">
+        <li><strong>Sandhi junctions</strong> — where two phonemes collide and transform, generating acoustic events that mirror prāṇic transitions between bodily regions</li>
+        <li><strong>Samāsa compounds</strong> — where multiple root concepts are compressed into single sonic bodies, creating layered resonance fields</li>
+        <li><strong>Noise/vowel patterns</strong> — the deliberate placement of nasal phonemes (<span class="sa">ञ, ण, न, म, ङ</span>), sibilants (<span class="sa">श, ष, स</span>), and long vowels (<span class="sa">आ, ई, ऊ, ऐ, ओ</span>) at structurally critical positions within sūtras</li>
+      </ol>
+
+      <p>This document undertakes a systematic survey of all sūtras in Adhyāyas I and II, identifying every phonemically significant word, sandhi event, samāsa, and vowel cluster that maps onto the Mātṛkā Nyāsa schema, and explains the purificatory mechanism activated by each.</p>
+    </section>
+
+    <div class="ornament-div">❧ ॐ ❧</div>
+
+    <!-- ══════════════════════════════════════
+         §2 · MĀTṚKĀ FRAMEWORK
+    ══════════════════════════════════════ -->
+    <section id="matrika-frame">
+      <h1 class="sec-head">§2 · The Mātṛkā Nyāsa Framework
+        <span class="page-ref">p. 3</span></h1>
+
+      <p>The canonical arrangement of the 51 mātṛkās follows the <span class="sa">वर्णमाला</span> sequence as systematized in texts such as the <span class="sa">भैरवयामल</span>, <span class="sa">तन्त्रालोक</span> (Abhinavagupta, Chapter 3), and the <span class="sa">श्रीविद्यारत्नसूत्र</span>. The mātṛkās are distributed across the body in the following primary schema:</p>
+
+      <table class="analysis-table">
+        <thead>
+          <tr>
+            <th>Phoneme Group</th>
+            <th>Devanāgarī</th>
+            <th>IAST</th>
+            <th>Bodily Zone (Primary Nyāsa)</th>
+            <th>Cakra / Nāḍī Locus</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Vowels (Svaras) 1–4</td>
+            <td class="sa">अ आ इ ई</td>
+            <td>a ā i ī</td>
+            <td>Crown / Brahmarandhra</td>
+            <td>Sahasrāra, Ājñā</td>
+          </tr>
+          <tr>
+            <td>Vowels 5–8</td>
+            <td class="sa">उ ऊ ऋ ॠ</td>
+            <td>u ū ṛ ṝ</td>
+            <td>Throat / Viśuddha region</td>
+            <td>Viśuddha cakra</td>
+          </tr>
+          <tr>
+            <td>Vowels 9–14</td>
+            <td class="sa">ऌ ए ऐ ओ औ अं अः</td>
+            <td>ḷ e ai o au aṃ aḥ</td>
+            <td>Face / Lips / Jaw</td>
+            <td>Ājñā downward</td>
+          </tr>
+          <tr>
+            <td>Gutturals (Kaṇṭhya)</td>
+            <td class="sa">क ख ग घ ङ</td>
+            <td>ka kha ga gha ṅa</td>
+            <td>Throat interior</td>
+            <td>Viśuddha</td>
+          </tr>
+          <tr>
+            <td>Palatals (Tālavya)</td>
+            <td class="sa">च छ ज झ ञ</td>
+            <td>ca cha ja jha ña</td>
+            <td>Heart / chest</td>
+            <td>Anāhata</td>
+          </tr>
+          <tr>
+            <td>Cerebrals (Mūrdhanya)</td>
+            <td class="sa">ट ठ ड ढ ण</td>
+            <td>ṭa ṭha ḍa ḍha ṇa</td>
+            <td>Navel / solar plexus</td>
+            <td>Maṇipūra</td>
+          </tr>
+          <tr>
+            <td>Dentals (Dantya)</td>
+            <td class="sa">त थ द ध न</td>
+            <td>ta tha da dha na</td>
+            <td>Lower abdomen / sacral</td>
+            <td>Svādhiṣṭhāna</td>
+          </tr>
+          <tr>
+            <td>Labials (Oṣṭhya)</td>
+            <td class="sa">प फ ब भ म</td>
+            <td>pa pha ba bha ma</td>
+            <td>Root / pelvic floor</td>
+            <td>Mūlādhāra</td>
+          </tr>
+          <tr>
+            <td>Semivowels (Antastha)</td>
+            <td class="sa">य र ल व</td>
+            <td>ya ra la va</td>
+            <td>Limbs / extremities</td>
+            <td>Prāṇa channels</td>
+          </tr>
+          <tr>
+            <td>Sibilants + Ha (Ūṣman)</td>
+            <td class="sa">श ष स ह</td>
+            <td>śa ṣa sa ha</td>
+            <td>Skin surface / auric field</td>
+            <td>Prāṇamaya koṣa boundary</td>
+          </tr>
+          <tr>
+            <td>Kṣa (Compound)</td>
+            <td class="sa">क्ष</td>
+            <td>kṣa</td>
+            <td>Sahasrāra (apex unification)</td>
+            <td>Dvādaśānta</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>In <span class="sa">षोढा-न्यास</span> (Sixfold Nyāsa) as described in the Śrīvidyā tradition, these phonemes are installed in six fields: the six cakras, the ten vital breaths (daśa prāṇa), the five mahābhūtas, the six limbs (aṅga nyāsa), the ten senses, and the three kośas. The Brahmasūtras, recited in the course of pāṭha or japa, simultaneously activate all six fields, because every sūtra contains words spanning multiple phoneme groups.</p>
+
+      <p>The mechanism is not metaphorical. Modern phonoacoustic research (particularly the work on cymatics, bone conduction, and vagal nerve stimulation through chant) confirms that the articulation points of Sanskrit consonants — guttural vibration activating the vagus; cerebral consonants stimulating the pterygopalatine ganglion; labial consonants creating chest resonance — correspond closely with the traditional cakra loci. The Brahmasūtras, with their extremely dense compound formations and long sandhi chains, create sustained vibration patterns across multiple resonance zones simultaneously.</p>
+    </section>
+
+    <!-- §3 SANDHI THEORY -->
+    <section id="sandhi-theory">
+      <h1 class="sec-head">§3 · Sandhi, Samāsa &amp; the Acoustic Body
+        <span class="page-ref">p. 5</span></h1>
+
+      <h2 class="sec-subhead">3.1 The Three Principal Sandhi Types and Their Physiological Correlates</h2>
+
+      <p>Sanskrit sandhi is not merely a phonological convenience. From the standpoint of Mātṛkā Nyāsa, each sandhi type represents a specific prāṇic event — a transition between bodily regions, a crossing of nadī boundaries, or an intensification of resonance at a cakra junction point.</p>
+
+      <div class="sandhi-card">
+        <div class="card-title">Svara-Sandhi (Vowel Junction) — प्रांजलता — Prāṇa Confluence</div>
+        <p>When two vowels merge (e.g., <span class="sa">अ + अ = आ</span>, or <span class="sa">अ + इ = ए</span>), the acoustic event creates a sustained dīrgha (long) vowel or a compound vowel (saṃdhyakṣara). In nyāsa terms, this represents the <em>confluence of two cakra resonance fields</em>. The merged vowel carries the vibration of both source phonemes simultaneously, giving it an amplified effect in the corresponding bodily zone. Example: <span class="sa">ब्रह्मजिज्ञासा</span> = <span class="sa">ब्रह्मन् + जिज्ञासा</span> — the junction produces a nasalized <span class="sa">ञ</span> resonance (Anāhata → palatal field = heart purification).</p>
+      </div>
+
+      <div class="sandhi-card">
+        <div class="card-title">Vyañjana-Sandhi (Consonant Junction) — शक्ति-प्रवाह — Śakti Flow Activation</div>
+        <p>Consonant sandhis — particularly those involving assimilation to nasals (<span class="sa">अनुनासिक</span>), retroflexion shift (<span class="sa">मूर्धन्य</span>), and voiced/voiceless alternations — signal the transfer of sonic energy between bodily zones. The shift from a dental stop to a cerebral nasal (as frequently occurs in these sūtras) maps directly onto the nyāsa movement from the Svādhiṣṭhāna field upward to the Maṇipūra, evoking the <span class="sa">कुण्डलिनी</span> ascent pattern.</p>
+      </div>
+
+      <div class="sandhi-card">
+        <div class="card-title">Visarga-Sandhi (Aspirate Junction) — विसर्ग — Expansive Breath Release</div>
+        <p>The <span class="sa">विसर्ग</span> (ḥ) is itself a mātṛkā — it corresponds to the <span class="sa">अः</span> phoneme which occupies the extreme point of the vocal apparatus (post-glottal), and in nyāsa is placed at the Brahmarandhra or the two nostrils. Visarga sandhi events (very frequent in the Brahmasūtras) create short bursts of open-air resonance that physiologically stimulate the Ājñā cakra region and activate the upper prāṇa channels.</p>
+      </div>
+
+      <h2 class="sec-subhead">3.2 Samāsa (Compound) Types and Layered Resonance</h2>
+
+      <p>The Brahmasūtras are dense with <strong>Tatpuruṣa</strong>, <strong>Karmadhāraya</strong>, <strong>Bahuvrīhi</strong>, and <strong>Dvandva</strong> compounds. Each compound type creates a distinct acoustic envelope — a sonic package that carries multiple phonemic zones simultaneously. When such a compound is recited, the practitioner's vocal tract must navigate multiple articulation zones in rapid sequence, producing a kind of <em>acoustic sweep</em> across the body's phonemic map.</p>
+
+      <p>A crucial Brahmasūtra compound like <span class="sa">जन्माद्यस्य</span> (1.1.2) contains: <span class="sa">ज</span> (palatal, Anāhata), <span class="sa">न्म</span> (nasal cluster, dental + labial = Svādhiṣṭhāna + Mūlādhāra confluence), <span class="sa">आ</span> (long <em>ā</em>, Brahmarandhra), <span class="sa">द्य</span> (dental + semivowel), and <span class="sa">स्य</span> (sibilant + semivowel). In nine phonemes, the voice traverses all major cakra zones from Mūlādhāra to Sahasrāra — a complete vertical sweep of the subtle body.</p>
+    </section>
+
+    <div class="ornament-div">❧ ✦ ❧</div>
+
+    <!-- ══════════════════════════════════════
+         §4 · ADHYĀYA I, PĀDA 1
+    ══════════════════════════════════════ -->
+    <section id="a1p1">
+      <h1 class="sec-head">§4 · Adhyāya I, Pāda 1 — Sūtras 1.1.1–1.1.31
+        <span class="page-ref">p. 7</span></h1>
+
+      <!-- 1.1.1 -->
+      <div class="sutra-block">
+        <div class="sutra-num">Sūtra 1.1.1</div>
+        <div class="sutra-sa">ॐ अथातो ब्रह्मजिज्ञासा ॐ</div>
+        <div class="sutra-trans"><em>athāto brahma-jijñāsā</em> — "Now therefore the inquiry into Brahman."</div>
+      </div>
+
+      <div class="phoneme-card">
+        <div class="card-title">Key Phonemes &amp; Acoustic Events</div>
+        <p>This inaugural sūtra is acoustically the most complete in the entire text — it functions as a <em>phonemic seed-mantra</em> for the entire śāstra.</p>
+        <div class="phoneme-grid">
+          <div class="phoneme-cell"><span class="devanagari">अ</span><span class="iast">a</span><div class="nyasa-loc">Sahasrāra / crown</div></div>
+          <div class="phoneme-cell"><span class="devanagari">थ</span><span class="iast">tha</span><div class="nyasa-loc">Dental — Svādhiṣṭhāna</div></div>
+          <div class="phoneme-cell"><span class="devanagari">आ</span><span class="iast">ā</span><div class="nyasa-loc">Brahmarandhra</div></div>
+          <div class="phoneme-cell"><span class="devanagari">तः</span><span class="iast">taḥ</span><div class="nyasa-loc">Visarga → nostrils</div></div>
+          <div class="phoneme-cell"><span class="devanagari">ब्र</span><span class="iast">bra</span><div class="nyasa-loc">Labial + ra = root+limbs</div></div>
+          <div class="phoneme-cell"><span class="devanagari">ह्म</span><span class="iast">hma</span><div class="nyasa-loc">Ha + labial = auric+root</div></div>
+          <div class="phoneme-cell"><span class="devanagari">जि</span><span class="iast">ji</span><div class="nyasa-loc">Palatal — heart</div></div>
+          <div class="phoneme-cell"><span class="devanagari">ज्ञा</span><span class="iast">jñā</span><div class="nyasa-loc">Jña-compound = ājñā cakra</div></div>
+          <div class="phoneme-cell"><span class="devanagari">सा</span><span class="iast">sā</span><div class="nyasa-loc">Sibilant + ā = skin+crown</div></div>
+        </div>
+      </div>
+
+      <div class="sandhi-card">
+        <div class="card-title">Sandhi Analysis</div>
+        <p><strong>अथ + अतः → अथातः:</strong> Svara-sandhi (<span class="sa">अ + अ → आ</span>). The meeting of two <em>a</em>-vowels produces the sustained long <em>ā</em>, vibrating the Brahmarandhra. This is <em>avagraha sandhi</em> but noted as elision into lengthening — the phoneme doubles in depth, stimulating the crown cakra prolongedly.</p>
+        <p><strong>ब्रह्म + जिज्ञासा → ब्रह्मजिज्ञासा:</strong> Compound junction. The <span class="sa">म</span> (labial nasal, Mūlādhāra resonance) directly precedes <span class="sa">ज</span> (palatal, Anāhata) — a bottom-to-heart phonemic leap, symbolizing prāṇa rising from the root to the heart in the context of Brahma-inquiry.</p>
+      </div>
+
+      <div class="matrika-card">
+        <div class="card-title">Mātṛkā Nyāsa Correspondence</div>
+        <p>The compound <span class="sa">ब्रह्मजिज्ञासा</span> alone contains: <span class="phoneme-tag">ब</span><span class="phoneme-tag">र</span><span class="phoneme-tag">ह्म</span><span class="phoneme-tag">ज</span><span class="phoneme-tag">ज्ञ</span><span class="phoneme-tag">आ</span><span class="phoneme-tag">सा</span> — a sequence that in nyāsa activates: <span class="body-part-tag">pelvic floor</span> → <span class="body-part-tag">arms/limbs</span> → <span class="body-part-tag">auric skin</span> → <span class="body-part-tag">heart</span> → <span class="body-part-tag">ājñā brow</span> → <span class="body-part-tag">crown</span> → <span class="body-part-tag">skin</span>. The total effect is a full-body ascending sweep — the perfect opening mantra for a jijñāsā (inquiry) practice.</p>
+        <p>The word <span class="sa">जिज्ञासा</span> is particularly significant: <span class="sa">जि-ज्ञा-सा</span>. The doubled <span class="sa">ज</span> (ja, palatal) creates a resonant emphasis on the Anāhata / heart field. <span class="sa">ज्ञ</span> (jña) is a compound phoneme associated with the Ājñā cakra in Tantric tradition — literally "knowledge-perception" encoded in a single consonant cluster.</p>
+      </div>
+
+      <!-- 1.1.2 -->
+      <div class="sutra-block">
+        <div class="sutra-num">Sūtra 1.1.2</div>
+        <div class="sutra-sa">ॐ जन्माद्यस्य यतः ॐ</div>
+        <div class="sutra-trans"><em>janmādyasya yataḥ</em> — "From which [Brahman] originate birth etc. [of this world]."</div>
+      </div>
+
+      <div class="sandhi-card">
+        <div class="card-title">Sandhi: जन्म + आदि → जन्माद्य</div>
+        <p><strong>Vṛddhi Sandhi:</strong> <span class="sa">अ + आ → आ</span> (length fusion). The <span class="sa">म् + आ</span> junction — labial nasal meets long open vowel — creates a resonance pattern that physiologically amplifies chest-cavity vibration into the open mouth/crown pathway. The <span class="sa">न्म</span> nasal cluster (dental + labial = <span class="sa">न</span> + <span class="sa">म</span>) simultaneously activates Svādhiṣṭhāna and Mūlādhāra in a single phonemic beat.</p>
+      </div>
+
+      <div class="matrika-card">
+        <div class="card-title">Mātṛkā: जन्माद्यस्य</div>
+        <p><span class="sa">यतः</span> — the word that names the Source — deploys the semivowel <span class="sa">य</span> (ya, limb-channel activation) joined to <span class="sa">त</span> (dental) and visarga <span class="sa">ः</span> (upper prāṇa release). The effect is: limb channels → lower body → nostril release — a breathing cycle encoded in three phonemes. Recitation of <span class="sa">यतः</span> with awareness activates the prāṇa channel from the peripheral body inward to the center.</p>
+      </div>
+
+      <!-- 1.1.3 through 1.1.5 grouped -->
+      <div class="sutra-block">
+        <div class="sutra-num">Sūtras 1.1.3–1.1.5</div>
+        <div class="sutra-sa">ॐ शास्त्रयोनित्वात् ॐ · ॐ तत्तु समन्वयात् ॐ · ॐ ईक्षतेर्नाशब्दम् ॐ</div>
+        <div class="sutra-trans"><em>śāstrayonitvāt · tattū samanvayāt · īkṣater nāśabdam</em></div>
+      </div>
+
+      <div class="phoneme-card">
+        <div class="card-title">Phonemic Analysis: 1.1.3–1.1.5</div>
+        <p><strong>शास्त्रयोनित्वात्:</strong> This is a Tatpuruṣa compound of supreme sonic density. <span class="sa">शा</span> (śā — sibilant+long ā = skin boundary + crown); <span class="sa">स्त्र</span> (stra — compound cluster: sibilant + dental + semivowel = a triple-zone sweep); <span class="sa">योनि</span> (yoni — semivowel ya + cerebral ṇ-field + long i = limbs + navel + upper throat); <span class="sa">त्वात्</span> (tvāt — dental + semivowel + dental + visarga = lower-body cascade with nostril release).</p>
+        <p>The word <span class="sa">योनि</span> in the context of nyāsa is critical: it contains both <span class="sa">य</span> (Prāṇa channels, limbs) and the nasal <span class="sa">न</span> (dental zone, Svādhiṣṭhāna) and the vowel <span class="sa">इ</span> (viśuddha-region). In Śākta nyāsa, the phoneme <span class="sa">य</span> is identified with the bīja of Air (Vāyu-bīja = <span class="sa">यं</span>) and placed in the heart region — making <span class="sa">शास्त्रयोनित्वात्</span> a word whose recitation sweeps from the skin-boundary (śa), through the chest (ya), the solar plexus (ni), ending in visarga (upper prāṇa).</p>
+        <p><strong>ईक्षतेर्नाशब्दम् (1.1.5):</strong> Notable for the long vowel <span class="sa">ई</span> (ī, Viśuddha / throat cakra) at the opening — the sūtra <em>begins</em> with a prolonged throat-cakra activation. <span class="sa">ईक्षते</span> ("one who sees/intuits") — the act of Brahman's self-reflection — is thus encoded in a phoneme that resonates in the very zone of higher perception (Viśuddha → Ājñā pathway). The cluster <span class="sa">क्ष</span> (kṣa) at the apex of the 51 mātṛkās appears here, reinforcing the connection between divine Seeing and the Sahasrāra.</p>
+      </div>
+
+      <!-- 1.1.12 — ānandamaya -->
+      <div class="sutra-block">
+        <div class="sutra-num">Sūtra 1.1.12</div>
+        <div class="sutra-sa">ॐ आनन्दमयोऽभ्यासात् ॐ</div>
+        <div class="sutra-trans"><em>ānandamayo'bhyāsāt</em> — "[Brahman is the inner] ānandamaya, on account of repetition [of the teaching]."</div>
+      </div>
+
+      <div class="matrika-card">
+        <div class="card-title">Mātṛkā: आनन्दमयोऽभ्यासात्</div>
+        <p>This sūtra is among the most phonemically potent in the entire text. <span class="sa">आ</span> (ā, long — Brahmarandhra crown vibration, the first of the 51 mātṛkās after <span class="sa">अ</span>); <span class="sa">न</span> × 2 (dental nasal, Svādhiṣṭhāna — the word contains two <span class="sa">न</span> phonemes, doubling the lower-body resonance); <span class="sa">द</span> (dental voiced stop); <span class="sa">म</span> (labial nasal, Mūlādhāra — root field).</p>
+        <p>The word <span class="sa">आनन्द</span> is phonemically: <span class="phoneme-tag">आ</span> (crown) + <span class="phoneme-tag">न</span> (sacral) + <span class="phoneme-tag">न</span> (sacral) + <span class="phoneme-tag">द</span> (lower abdomen). The doubled <span class="sa">न</span> creates a resonance in the Svādhiṣṭhāna that persists — physiologically, nasal resonance in the dental position (tip-of-tongue to teeth) activates the trigeminal nerve network, which in turn connects to limbic system pathways associated with joy and bliss states. The Tantric tradition's identification of <span class="sa">आनन्द</span> as a bīja of ecstasy is therefore not metaphorical — it has direct neuroacoustic grounding.</p>
+        <p><strong>Sandhi:</strong> <span class="sa">मयः + अभ्यासात्</span> — visarga sandhi producing the avagraha <span class="sa">ऽ</span>. The visarga here releases the accumulated chest resonance of <span class="sa">मय</span> (labial + semivowel + <em>a</em>) upward, and the <span class="sa">अभ्य</span> that follows begins with the fundamental <span class="sa">अ</span> phoneme (Sahasrāra), followed by the labial <span class="sa">भ</span> and semivowel <span class="sa">य</span> — root → limbs — a descending movement that mirrors the <em>ānanda</em> flowing down from the crown into the body.</p>
+      </div>
+
+      <!-- 1.1.22-25 -->
+      <h2 class="sec-subhead">Notable Phonemic Clusters: Sūtras 1.1.22–1.1.25</h2>
+
+      <div class="sutra-block">
+        <div class="sutra-num">Sūtra 1.1.22</div>
+        <div class="sutra-sa">ॐ आकाशस्तल्लिङ्गात् ॐ</div>
+        <div class="sutra-trans"><em>ākāśas talliṅgāt</em> — "[The ākāśa referred to is] that [Brahman], on account of its mark."</div>
+      </div>
+
+      <div class="sandhi-card">
+        <div class="card-title">Ākāśa: The Space-Phoneme Complex</div>
+        <p><span class="sa">आकाश</span> is itself a mātṛkā-dense compound: <span class="sa">आ</span> (long ā, crown) + <span class="sa">का</span> (ka, guttural = Viśuddha throat) + <span class="sa">श</span> (śa, palatal sibilant = skin boundary / auric field). The word literally spans crown → throat → skin, which in the nyāsa map corresponds to the upper-body axis. <span class="sa">आकाश</span> as "space" is thus phonemically instantiated as the quality of spatial openness in the upper body — throat opening, crown softening, the skin as boundary of the prāṇamaya.</p>
+        <p><span class="sa">लिङ्ग</span> — the "mark" or "indicator": <span class="sa">ल</span> (semivowel, limbs), <span class="sa">इ</span> (i, throat region), <span class="sa">ङ्ग</span> (ṅga, guttural nasal — Viśuddha). This sequence maps: limbs → throat → throat-nasal — a convergence in the neck/throat zone that in Tantric physiology is where the <span class="sa">अकुल</span>-<span class="sa">कुल</span> axis (transcendent-immanent interface) is located.</p>
+      </div>
+
+      <div class="sutra-block">
+        <div class="sutra-num">Sūtra 1.1.23</div>
+        <div class="sutra-sa">ॐ अत एव प्राणः ॐ</div>
+        <div class="sutra-trans"><em>ata eva prāṇaḥ</em> — "For the same reason, [the Prāṇa referred to is also Brahman]."</div>
+      </div>
+
+      <div class="matrika-card">
+        <div class="card-title">Prāṇa: The Breath-Phoneme</div>
+        <p><span class="sa">प्राणः</span> is a mātṛkā landmark: <span class="sa">प</span> (labial, Mūlādhāra) + <span class="sa">र</span> (semivowel, limbs) + <span class="sa">आ</span> (long ā, crown) + <span class="sa">ण</span> (cerebral nasal, Maṇipūra navel) + visarga <span class="sa">ः</span> (upper release). This single word therefore traces the complete vertical axis: <span class="body-part-tag">root/Mūlādhāra</span> → <span class="body-part-tag">peripheral channels</span> → <span class="body-part-tag">crown</span> → <span class="body-part-tag">navel/Maṇipūra</span> → <span class="body-part-tag">nostril exhalation</span>. The word <span class="sa">प्राण</span> is itself a miniature prāṇāyāma instruction encoded in phonemes.</p>
+      </div>
+
+      <div class="sutra-block">
+        <div class="sutra-num">Sūtra 1.1.24</div>
+        <div class="sutra-sa">ॐ ज्योतिश्चरणाभिधानात् ॐ</div>
+        <div class="sutra-trans"><em>jyotiś caraṇābhidhānāt</em> — "[Brahman is identified as] light, from [Upaniṣadic] description of its foot/section."</div>
+      </div>
+
+      <div class="phoneme-card">
+        <div class="card-title">Jyotis: The Light-Phoneme Complex</div>
+        <p><span class="sa">ज्योतिः</span> — Light/Brahman: <span class="sa">ज्यो</span> (palatal + semivowel + long compound vowel = heart + limb + diphthong sweep) + <span class="sa">ति</span> (dental + i = lower body + throat) + visarga. Particularly, the <span class="sa">ज्यो</span> opening — palatal stop followed by the diphthong <span class="sa">यो</span> — creates a heart-to-limb resonance cascade that is physically felt as a warmth in the chest and arms during recitation.</p>
+        <p><span class="sa">चरण</span> (foot/section): <span class="sa">च</span> (palatal, heart) + <span class="sa">र</span> (semivowel, limbs) + <span class="sa">ण</span> (cerebral nasal, navel). Heart → limbs → navel — the descent of spiritual light into the lower body's stability foundation.</p>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+         §5 · ADHYĀYA I, PĀDA 2
+    ══════════════════════════════════════ -->
+    <section id="a1p2">
+      <h1 class="sec-head">§5 · Adhyāya I, Pāda 2 — Sūtras 1.2.1–1.2.32
+        <span class="page-ref">p. 11</span></h1>
+
+      <div class="sutra-block">
+        <div class="sutra-num">Sūtra 1.2.1</div>
+        <div class="sutra-sa">ॐ सर्वत्र प्रसिद्धोपदेशात् ॐ</div>
+        <div class="sutra-trans"><em>sarvatra prasiddhopadeśāt</em> — "Because [Brahman] is universally well-known in [Upaniṣadic] instruction."</div>
+      </div>
+
+      <div class="phoneme-card">
+        <div class="card-title">सर्वत्र: Omnipresence Encoded in Phonemes</div>
+        <p><span class="sa">सर्व</span>: <span class="sa">स</span> (sibilant = skin/auric) + <span class="sa">र</span> (semivowel = limbs) + <span class="sa">व</span> (labio-dental semivowel = transition zone between root and limbs). These three phonemes together represent the three principal bodily surfaces — skin, extremities, and transitional musculature — conveying the sense of "all-pervasiveness" at the somatic level itself.</p>
+        <p><span class="sa">प्रसिद्ध</span>: The cluster <span class="sa">प्र</span> (labial + semivowel ra) opens with a Mūlādhāra activation and immediately extends through the prāṇa channels. <span class="sa">सिद्ध</span> = <span class="sa">स</span> (sibilant) + <span class="sa">द्ध</span> (aspirated dental cluster) + final <span class="sa">ध</span> — a cascading aspiration event that moves from skin surface through dental zones, symbolizing the "accomplishment" (siddhi) that flows from the periphery to the center.</p>
+      </div>
+
+      <div class="sutra-block">
+        <div class="sutra-num">Sūtra 1.2.11</div>
+        <div class="sutra-sa">ॐ गुहां प्रविष्टावात्मानौ हि तद्दर्शनात् ॐ</div>
+        <div class="sutra-trans"><em>guhāṃ praviṣṭāv ātmānau hi taddarśanāt</em> — "The two that have entered the cave — because so it is seen."</div>
+      </div>
+
+      <div class="matrika-card">
+        <div class="card-title">गुहा: The Cave — Heart-Space Phonemics</div>
+        <p>This is one of the most profound Mātṛkā-resonant sūtras. <span class="sa">गुहा</span> (cave/heart-space): <span class="sa">ग</span> (guttural voiced, Viśuddha throat) + <span class="sa">ु</span> (u, short = Viśuddha, upper chest) + <span class="sa">ह</span> (ha, sibilant-aspirate = auric field boundary, the "last phoneme" before silence) + <span class="sa">ā</span> (long ā, crown). The <span class="sa">गुहा</span> syllable sequence literally moves from the throat → open chest → dissolution into crown — precisely the trajectory of meditation that enters the <span class="sa">हृदयाकाश</span> (heart-space).</p>
+        <p>The dual compound <span class="sa">आत्मानौ</span> (the two ātmans — jīvātman and Paramātman) contains: <span class="sa">आ</span> (crown) + <span class="sa">त्म</span> (dental + labial = lower body convergence) + <span class="sa">आ</span> (crown again) + <span class="sa">नौ</span> (nasal + compound vowel = dental+diphthong). The two <span class="sa">आ</span>s embrace the dental-labial zone — symbolizing the two ātmans as crown-consciousness recognizing itself at the center of the body, with the dental-labial zone (<span class="sa">त्म</span>) as the meeting ground.</p>
+        <p>In Nyāsa practice, this sūtra is specifically associated with <strong>Hṛdaya Nyāsa</strong> — the installation of consciousness in the heart-cave. The phonemic sequence <span class="sa">गुहां प्रविष्टौ</span> should be recited while touching the center of the chest (Anāhata region), allowing the <span class="sa">ग-ु-ह-आ</span> vibration to penetrate the cardiac plexus.</p>
+      </div>
+
+      <div class="sutra-block">
+        <div class="sutra-num">Sūtra 1.2.18</div>
+        <div class="sutra-sa">ॐ अन्तर्याम्यधिदैवादिषु तद्धर्मव्यपदेशात् ॐ</div>
+        <div class="sutra-trans"><em>antaryāmyadhidaivādiṣu taddharma-vyapadeśāt</em></div>
+      </div>
+
+      <div class="matrika-card">
+        <div class="card-title">अन्तर्यामिन्: The Inner Controller</div>
+        <p><span class="sa">अन्तर्यामि</span> is a philosophically central compound: "the Inner Controller." Phonemically: <span class="sa">अन्</span> (vowel + dental nasal = crown into lower body) + <span class="sa">तर्</span> (dental + cerebral semivowel = lower body + spine) + <span class="sa">या</span> (semivowel + ā = limbs + crown) + <span class="sa">मि</span> (labial + i = root + throat). The sequence thus describes the Inner Controller's omnipresence by tracing: crown → lower body → spine (Suṣumnā axis) → limbs → root → throat — essentially a complete Kuṇḍalinī circuit in phonemic form.</p>
+        <p>This sūtra contains the longest samāsa sequence in Pāda 2: <span class="sa">तद्धर्मव्यपदेशात्</span> — a five-member compound whose recitation alone takes the voice through six distinct articulation zones. This type of dense compound is what the Tantra calls <span class="sa">मन्त्रघन</span> — "mantra-thick" — where the phonemic density per unit time is so high that a complete cakra sweep occurs within a single breath-unit.</p>
+      </div>
+
+      <div class="sutra-block">
+        <div class="sutra-num">Sūtra 1.2.21</div>
+        <div class="sutra-sa">ॐ अदृश्यत्वादिगुणको धर्मोक्तेः ॐ</div>
+        <div class="sutra-trans"><em>adṛśyatvādi-guṇako dharmokteh</em> — "Because [Brahman] is characterized by qualities such as invisibility."</div>
+      </div>
+
+      <div class="phoneme-card">
+        <div class="card-title">अदृश्यत्व: The Invisible — Phonemic Analysis</div>
+        <p><span class="sa">अदृश्यत्वादि</span>: Note the cerebral <span class="sa">ऋ</span> (ṛ, short) in <span class="sa">दृश्य</span> — this phoneme (<span class="sa">ऋ</span>) is one of the rare vocalic liquids in the mātṛkā schema, placed at the Viśuddha/Navel interface. The word <span class="sa">दृश्य</span> ("visible/perceptible") contains this <span class="sa">ṛ</span> vowel followed by <span class="sa">श</span> (palatal sibilant) and <span class="sa">य</span> (semivowel) — a sequence that physiologically maps to: throat pivot → skin boundary → limb extension. The negation prefix <span class="sa">अ</span> (first mātṛkā, Sahasrāra) placed before this sequence declares: "what is beyond the crown-to-skin-to-limb range of ordinary perception."</p>
+      </div>
+    </section>
+
+    <!-- §6 ADHYĀYA I PĀDA 3 -->
+    <section id="a1p3">
+      <h1 class="sec-head">§6 · Adhyāya I, Pāda 3 — Sūtras 1.3.1–1.3.43
+        <span class="page-ref">p. 14</span></h1>
+
+      <div class="sutra-block">
+        <div class="sutra-num">Sūtra 1.3.8</div>
+        <div class="sutra-sa">ॐ भूमा सम्प्रसादादध्युपदेशात् ॐ</div>
+        <div class="sutra-trans"><em>bhūmā samprasādād adhyupadeśāt</em> — "[The Bhūmā is Brahman] because it is taught with reference to the state of samādhi."</div>
+      </div>
+
+      <div class="matrika-card">
+        <div class="card-title">भूमन् + सम्प्रसाद: The Infinite &amp; the Clear Light</div>
+        <p><span class="sa">भूमा</span> ("the Infinite/Vast"): <span class="sa">भ</span> (labial aspirated = Mūlādhāra resonance, deep bass vibration) + <span class="sa">ऊ</span> (long ū = Viśuddha/throat in its deep, gathered form) + <span class="sa">म</span> (labial nasal, root) + <span class="sa">ā</span> (crown). The sequence root → throat → root → crown creates a standing wave between the two poles of the central axis — a perfect description of the infinite that has no boundary between its lowest and highest expressions.</p>
+        <p><span class="sa">सम्प्रसाद</span> ("clear serenity/samādhi state"): <span class="sa">स</span> (skin) + <span class="sa">म्</span> (anusvāra, hovering nasal = space between bodies) + <span class="sa">प्र</span> (Mūlādhāra + prāṇa extension) + <span class="sa">सा</span> (skin + crown) + <span class="sa">द</span> (dental, lower body). The word's phonemic movement: skin → dissolution into space → root upward → skin → lower body. This traces exactly the sensation of entering samādhi — the awareness dissolves from skin boundary inward, then from root upward, then re-establishes at the skin as the clarity of sattva.</p>
+      </div>
+
+      <div class="sutra-block">
+        <div class="sutra-num">Sūtra 1.3.14</div>
+        <div class="sutra-sa">ॐ दहर उत्तरेभ्यः ॐ</div>
+        <div class="sutra-trans"><em>dahara uttarebhyaḥ</em> — "The small [space in the heart — is Brahman], on account of [the teaching] that follows."</div>
+      </div>
+
+      <div class="matrika-card">
+        <div class="card-title">दहर: The Tiny Heart-Space</div>
+        <p>This is the Dahara Vidyā sūtra — referring to the <span class="sa">दहराकाश</span>, the infinitely small space within the lotus of the heart where Brahman resides. <span class="sa">दहर</span>: <span class="sa">द</span> (dental, Svādhiṣṭhāna) + <span class="sa">ह</span> (ha, auric field dissolution) + <span class="sa">र</span> (semivowel, limbs). The sequence: lower-body grounding → dissolution into space → extension through channels — creates the phonemic analog of finding the infinite in the infinitely small. In nyāsa practice, <span class="sa">दहर</span> is used as a hṛdaya-bīja — a seed syllable for heart-space meditation.</p>
+        <p>The entire sūtra <span class="sa">दहर उत्तरेभ्यः</span> contains <span class="sa">उत्तर</span> — "what follows/above": <span class="sa">उ</span> (short u, throat/Viśuddha) + <span class="sa">त्त</span> (dental cluster, lower body intensified) + <span class="sa">र</span> (limbs). The compound suggests ascending from lower-body density through the throat into spatial clarity — the upward direction of the Dahara meditation.</p>
+      </div>
+
+      <div class="sutra-block">
+        <div class="sutra-num">Sūtras 1.3.28–1.3.29</div>
+        <div class="sutra-sa">ॐ शब्दादिभ्यो... ॐ · ॐ अत एव च नित्यत्वम् ॐ</div>
+        <div class="sutra-trans"><em>śabdādibhyo... · ata eva ca nityatvam</em></div>
+      </div>
+
+      <div class="sandhi-card">
+        <div class="card-title">शब्द: The Phoneme that Names Itself</div>
+        <p><span class="sa">शब्द</span> ("sound/word") is the philosophically recursive phoneme-compound: it is a word about words. <span class="sa">श</span> (palatal sibilant, skin/auric boundary) + <span class="sa">ब्द</span> (labial + dental = Mūlādhāra + Svādhiṣṭhāna). "Sound" thus vibrates from its own surface (skin = <span class="sa">श</span>) down to its root origin (labial-dental = lower two cakras). The acoustic self-reference of the word <span class="sa">śabda</span> is mirrored in its mātṛkā mapping: sound originates at the root, rises to the surface, and is perceived at the boundary of self and world (skin/auric field).</p>
+        <p><span class="sa">नित्यत्वम्</span> ("eternity/permanence"): <span class="sa">नि</span> (dental nasal + i = lower body + throat) + <span class="sa">त्य</span> (dental + semivowel = lower body + limbs) + <span class="sa">त्व</span> (dental + semivowel) + <span class="sa">म्</span> (labial nasal, root). The repeated dental-semivowel pattern (<span class="sa">त्य, त्व</span>) creates a rhythmic lower-body grounding that phonically embodies the quality of permanence — the stable, rooted quality of what does not change.</p>
+      </div>
+
+      <!-- 1.3.34 — important -->
+      <div class="sutra-block">
+        <div class="sutra-num">Sūtra 1.3.34</div>
+        <div class="sutra-sa">ॐ शुगस्य तदनादरश्रवणात् तदाद्रवणात् सूच्यते हि ॐ</div>
+        <div class="sutra-trans"><em>śug asya tad-anādara-śravaṇāt tad-ādravāṇāt sūcyate hi</em></div>
+      </div>
+
+      <div class="phoneme-card">
+        <div class="card-title">शुक् / शुच् — Grief and the Palatal Sibilant</div>
+        <p><span class="sa">शुग्</span> (grief/pain): <span class="sa">श</span> (palatal sibilant = skin/emotional boundary) + <span class="sa">ु</span> (short u = Viśuddha/throat) + <span class="sa">ग्</span> (guttural = deep throat). The word encodes the physiological sensation of grief: a tightening from skin surface inward to the throat and closing at the deep guttural — exactly the somatic signature of grief or sorrow (tightening of the throat, constriction of the chest). <span class="sa">सूच्यते</span> ("is indicated/pointed to"): contains the long <span class="sa">ū</span> (deep throat vibration) followed by palatal <span class="sa">च</span> (heart) — the indication comes from the heart through the throat.</p>
+      </div>
+    </section>
+
+    <!-- §7 ADHYĀYA I PĀDA 4 -->
+    <section id="a1p4">
+      <h1 class="sec-head">§7 · Adhyāya I, Pāda 4 — Sūtras 1.4.1–1.4.29
+        <span class="page-ref">p. 17</span></h1>
+
+      <div class="sutra-block">
+        <div class="sutra-num">Sūtra 1.4.23</div>
+        <div class="sutra-sa">ॐ अवस्थितेरिति काशकृत्स्नः ॐ</div>
+        <div class="sutra-trans"><em>avasthiter iti kāśakṛtsnaḥ</em> — "Because [Brahman] remains [as the material cause], says Kāśakṛtsna."</div>
+      </div>
+
+      <div class="matrika-card">
+        <div class="card-title">काशकृत्स्न: The Teacher's Name as Phonemic Mantra</div>
+        <p>The sage's name <span class="sa">काशकृत्स्न</span> is acoustically remarkable: <span class="sa">का</span> (guttural + ā = throat + crown) + <span class="sa">श</span> (skin) + <span class="sa">कृ</span> (guttural + ṛ-vowel = throat + navel-interface) + <span class="sa">त्स्न</span> (complex dental cluster = lower body). This four-syllable name traverses: throat → skin → throat-navel → lower body. Names of ancient teachers (ācāryas) in the Sanskrit tradition were often chosen for their phonemic completeness — their ability to represent a full traverse of the phonemic body.</p>
+      </div>
+
+      <div class="sutra-block">
+        <div class="sutra-num">Sūtra 1.4.24–1.4.25</div>
+        <div class="sutra-sa">ॐ प्रकृतिश्च प्रतिज्ञादृष्टान्तानुपरोधात् ॐ · ॐ अभिध्योपदेशाच्च ॐ</div>
+      </div>
+
+      <div class="sandhi-card">
+        <div class="card-title">Sandhi Chain Analysis: 1.4.24</div>
+        <p>This sūtra presents a remarkable chain: <span class="sa">प्रकृतिश्च</span> involves the junction <span class="sa">ि + श्</span> after <span class="sa">कृति</span> — the palatal sibilant <span class="sa">श्</span> introduced by sandhi creates a shift from the dental-palatal zone to the sibilant (skin) zone. <span class="sa">प्रतिज्ञा</span> (promise/thesis): <span class="sa">प्र</span> (root + prāṇa) + <span class="sa">ति</span> (dental + i) + <span class="sa">ज्ञा</span> (jña-cluster = Ājñā cakra + long ā). Thus the very word for "thesis/declaration" contains the Ājñā brow center — the seat of higher discriminative knowledge — directly linked to the root through prāṇa. A thesis is not merely an intellectual act but a declaration from the brow-center, grounded in the root.</p>
+        <p><span class="sa">अभिध्योपदेश</span> (upward meditation / concentration): <span class="sa">अभि</span> (toward, prefix: first mātṛkā + labial = crown-directed from root) + <span class="sa">ध्या</span> (dhyā: dental aspirate + semivowel + ā = lower body → limbs → crown) — the prefix and root together trace the arc of dhyāna: beginning at the root, extending through the channels, arriving at the crown. The word literally instantiates meditation in its phonemic structure.</p>
+      </div>
+    </section>
+
+    <div class="ornament-div">❧ ✦ ❧</div>
+
+    <!-- ══════════════════════════════════════
+         §8 · ADHYĀYA II, PĀDA 1
+    ══════════════════════════════════════ -->
+    <section id="a2p1">
+      <h1 class="sec-head">§8 · Adhyāya II, Pāda 1 — Sūtras 2.1.1–2.1.38
+        <span class="page-ref">p. 19</span></h1>
+
+      <p>Adhyāya II marks the transition from the <em>Samanvaya</em> (harmonization) themes of Adhyāya I to the <em>Avirodha</em> (non-contradiction) analysis. Phonemically, this shift is reflected in a change in the sūtra's vocabulary: the dense long-vowel compounds of Adhyāya I give way to more staccato, consonant-heavy formations, producing a distinctly different resonance pattern — one more associated with the discriminative (vijñānamaya) functions of the subtle body.</p>
+
+      <div class="sutra-block">
+        <div class="sutra-num">Sūtra 2.1.1</div>
+        <div class="sutra-sa">ॐ स्मृत्यनवकाशदोषप्रसङ्ग इति चेन्नान्यस्मृत्यनवकाशदोषप्रसङ्गात् ॐ</div>
+        <div class="sutra-trans">The longest sūtra in Adhyāya II, Pāda 1 — dealing with the non-applicability of Sāṃkhya Smṛti.</div>
+      </div>
+
+      <div class="phoneme-card">
+        <div class="card-title">Compound Density: Phonemic Sweep Analysis</div>
+        <p>This exceptional sūtra — perhaps the most phonemically complex in Adhyāya II — contains the five-member Tatpuruṣa <span class="sa">स्मृत्यनवकाशदोषप्रसङ्ग</span>. Let us trace its phonemic traverse:</p>
+        <div class="phoneme-grid">
+          <div class="phoneme-cell"><span class="devanagari">स्मृ</span><span class="iast">smṛ</span><div class="nyasa-loc">skin + ṛ-vowel = navel boundary</div></div>
+          <div class="phoneme-cell"><span class="devanagari">त्य</span><span class="iast">tya</span><div class="nyasa-loc">dental + semivowel = lower+limbs</div></div>
+          <div class="phoneme-cell"><span class="devanagari">न</span><span class="iast">na</span><div class="nyasa-loc">dental nasal = Svādhiṣṭhāna</div></div>
+          <div class="phoneme-cell"><span class="devanagari">व</span><span class="iast">va</span><div class="nyasa-loc">labio-dental = root-limb interface</div></div>
+          <div class="phoneme-cell"><span class="devanagari">का</span><span class="iast">kā</span><div class="nyasa-loc">guttural + crown</div></div>
+          <div class="phoneme-cell"><span class="devanagari">श</span><span class="iast">śa</span><div class="nyasa-loc">palatal sibilant = skin</div></div>
+          <div class="phoneme-cell"><span class="devanagari">दो</span><span class="iast">do</span><div class="nyasa-loc">dental + compound vowel</div></div>
+          <div class="phoneme-cell"><span class="devanagari">ष</span><span class="iast">ṣa</span><div class="nyasa-loc">cerebral sibilant = navel-skin</div></div>
+          <div class="phoneme-cell"><span class="devanagari">प्र</span><span class="iast">pra</span><div class="nyasa-loc">labial + ra = root + channels</div></div>
+          <div class="phoneme-cell"><span class="devanagari">सङ्ग</span><span class="iast">saṅga</span><div class="nyasa-loc">sibilant + nasal + guttural = full sweep</div></div>
+        </div>
+        <p>The full compound sweeps from skin (śa-) → navel boundary (ṛ) → lower body (na, dental) → root-limb (va) → throat (kā) → skin (śa) → lower body (do, ṣa) → root (pra) → full-body convergence (saṅga). This 22-syllable traverse of the phonemic body — recited as a single compound — creates a sustained multi-cakra resonance pattern unmatched in concision.</p>
+      </div>
+
+      <div class="sutra-block">
+        <div class="sutra-num">Sūtra 2.1.14</div>
+        <div class="sutra-sa">ॐ भोक्त्रापत्तेरविभागश्चेत्स्याल्लोकवत् ॐ</div>
+      </div>
+
+      <div class="sandhi-card">
+        <div class="card-title">Sandhi: भोक्त्र + आपत्ति and विभाग</div>
+        <p><span class="sa">भोक्त्र</span> (experiencer/enjoyer): <span class="sa">भ</span> (labial aspirated = Mūlādhāra) + <span class="sa">ओ</span> (compound vowel = heart-region diphthong) + <span class="sa">क्त्र</span> (guttural + dental + semivowel = throat → lower → limbs). The word "enjoyer/experiencer" thus begins at the root (bha), rises to the heart (o-diphthong), and extends through the whole body (ktra-cluster). Every act of experience is phonemically encoded as a full-body resonance event.</p>
+        <p><span class="sa">विभाग</span> (distinction/division): <span class="sa">वि</span> (labio-dental + i = interface + throat) + <span class="sa">भा</span> (labial + ā = root + crown) + <span class="sa">ग</span> (guttural = throat). Division is thus phonemically: interface → root-crown polarity → throat grasping. The word for "distinction" creates a top-bottom polarity (root→crown in bhā) and then closes at the throat — exactly the cognitive act of distinction, which divides a field and grasps the parts.</p>
+      </div>
+
+      <div class="sutra-block">
+        <div class="sutra-num">Sūtra 2.1.33–2.1.34</div>
+        <div class="sutra-sa">ॐ न प्रयोजनत्त्वात् ॐ · ॐ लोकवत्तु लीलाकैवल्यम् ॐ</div>
+        <div class="sutra-trans"><em>na prayojanatvāt · lokavat tu līlā-kaivalyam</em> — "Not due to [having external] purpose. As in the world, [Brahman's] creation is mere play — absolute freedom."</div>
+      </div>
+
+      <div class="matrika-card">
+        <div class="card-title">लीला + कैवल्य: Play and Liberation</div>
+        <p><span class="sa">लीला</span> (divine play): <span class="sa">ल</span> (semivowel = limbs) + <span class="sa">ई</span> (long ī = Viśuddha, deep throat) + <span class="sa">ल</span> (semivowel = limbs) + <span class="sa">ā</span> (crown). The phonemic palindrome-like structure <span class="sa">ल-ī-ल-ā</span> — limbs → throat → limbs → crown — captures the quality of play: it moves through the body freely, has no destination (ends at crown, not at a constricted zone), and returns to its source. The doubled <span class="sa">ल</span> creates the sensation of easy movement — the literal phonemic body of play.</p>
+        <p><span class="sa">कैवल्य</span> (absolute aloneness/liberation): <span class="sa">कै</span> (guttural + compound vowel ai = throat + diphthong sweep) + <span class="sa">व</span> (labio-dental semivowel) + <span class="sa">ल्य</span> (semivowel + semivowel). The diphthong <span class="sa">ऐ</span> (ai) is phonically the most "open" of the compound vowels — a wide-mouth, high-resonance vowel that creates a sensation of spaciousness in the upper chest and throat. <span class="sa">कैवल्य</span> thus begins with the widest opening (the liberation-sound of <span class="sa">ऐ</span>) and dissolves into the movement of the semivowels. Liberation sounds like an open throat releasing into free motion.</p>
+      </div>
+
+      <div class="sutra-block">
+        <div class="sutra-num">Sūtra 2.1.35</div>
+        <div class="sutra-sa">ॐ वैष्यम्यनैर्घृण्ये न सापेक्षत्वात् तथा हि दर्शयति ॐ</div>
+      </div>
+
+      <div class="phoneme-card">
+        <div class="card-title">वैषम्य + नैर्घृण्य: Inequality and Cruelty — Phonemic Texture of Apparent Imperfection</div>
+        <p><span class="sa">वैषम्य</span> (unevenness/inequality): <span class="sa">व</span> (labio-dental) + <span class="sa">ऐ</span> (diphthong, wide) + <span class="sa">ष</span> (cerebral sibilant, navel-skin boundary) + <span class="sa">म्य</span> (labial nasal + semivowel = root + limbs). The cerebral sibilant <span class="sa">ष</span> appears here — its articulation requires the tongue to curl backward (retroflex), creating a distinct navel-region activation. The word for "inequality" thus contains the cerebral-sibilant phoneme that physically maps to the Maṇipūra-skin interface — the zone associated with personal power differentials in the yogic physiology.</p>
+        <p><span class="sa">नैर्घृण्य</span> (cruelty/heartlessness): <span class="sa">नैर्</span> (dental nasal + compound vowel + visarga = lower body + spacious diphthong + release) + <span class="sa">घृ</span> (guttural aspirated + ṛ-vowel = deep throat + navel) + <span class="sa">ण्य</span> (cerebral nasal + semivowel = navel + limbs). The word for "cruelty" concentrates phonemes in the throat-navel zone — the loci of power and hunger — and then extends to the limbs (as if grasping). This is a precise phonemic portrait of the physiological substrate of cruelty.</p>
+      </div>
+    </section>
+
+    <!-- §9 ADHYĀYA II PĀDA 2 -->
+    <section id="a2p2">
+      <h1 class="sec-head">§9 · Adhyāya II, Pāda 2 — Sūtras 2.2.1–2.2.45
+        <span class="page-ref">p. 21</span></h1>
+
+      <p>Adhyāya II, Pāda 2 is the great refutation pāda — the <em>Apavāda</em> section — where Bādarāyaṇa systematically dismantles rival philosophical systems (Sāṃkhya, Vaiśeṣika, Buddhist Vijñānavāda, Mādhyamika). The phonemic texture of refutation sūtras differs markedly from the meditative sūtras of Adhyāya I: they are dense with <span class="sa">न</span> (negation prefix), <span class="sa">अ-</span> (alpha privative), and the hard consonants of logical demolition (<span class="sa">क, ग, ट, त, द</span>).</p>
+
+      <div class="sutra-block">
+        <div class="sutra-num">Sūtra 2.2.1</div>
+        <div class="sutra-sa">ॐ रचनानुपपत्तेश्च नानुमानम् ॐ</div>
+        <div class="sutra-trans"><em>racanānupapatteś ca nānumānam</em> — "And because [the Sāṃkhya's Pradhāna] cannot account for [world] design, [it] is not inferrable."</div>
+      </div>
+
+      <div class="sandhi-card">
+        <div class="card-title">रचना: Construction — Phonemic Architecture</div>
+        <p><span class="sa">रचना</span> ("construction/design"): <span class="sa">र</span> (semivowel = limbs/channels) + <span class="sa">च</span> (palatal = heart) + <span class="sa">ना</span> (dental nasal + ā = lower body + crown). Construction is thus phonemically: channels → heart → lower body + crown — the act of building something requires the full body's engagement, from the directing mind (crown) through the heart (will) to the hands/channels (ra) and grounded base (na). The phonemic structure of <span class="sa">रचना</span> is architecturally complete.</p>
+      </div>
+
+      <div class="sutra-block">
+        <div class="sutra-num">Sūtra 2.2.11</div>
+        <div class="sutra-sa">ॐ महद्दीर्घवद्धा ह्रस्वपरिमण्डलाभ्याम् ॐ</div>
+        <div class="sutra-trans"><em>mahad-dīrgha-vad dhā hrasva-parimaṇḍalābhyām</em></div>
+      </div>
+
+      <div class="phoneme-card">
+        <div class="card-title">Size Concepts — Full-Spectrum Phonemics</div>
+        <p>This remarkable sūtra juxtaposes the entire spectrum of physical magnitude in a single utterance. <span class="sa">महत्</span> (great): <span class="sa">म</span> (labial = root) + <span class="sa">ह</span> (ha = auric dissolution) + <span class="sa">त्</span> (dental = lower body) — greatness phonemically spans root → surface dissolution → lower body grounding. <span class="sa">दीर्घ</span> (long): <span class="sa">दी</span> (dental + long ī = lower body + deep throat) + <span class="sa">र्घ</span> (semivowel + guttural = channels + throat). <span class="sa">ह्रस्व</span> (short): <span class="sa">ह्र</span> (ha + semivowel = dissolution + movement) + <span class="sa">स्व</span> (sibilant + semivowel = skin + movement). <span class="sa">परिमण्डल</span> (spherical): <span class="sa">प</span> (root) + <span class="sa">रि</span> (limbs + i) + <span class="sa">म</span> (root) + <span class="sa">ण्ड</span> (cerebral cluster = navel) + <span class="sa">ल</span> (limbs) — a sphere encoded as root→limbs→root→navel→limbs: a circling motion around the body's center.</p>
+      </div>
+
+      <!-- 2.2.25–2.2.30 Buddhist refutation section -->
+      <div class="sutra-block">
+        <div class="sutra-num">Sūtras 2.2.25–2.2.31 (Buddhist Refutation)</div>
+        <div class="sutra-sa">ॐ अनुस्मृतेश्च ॐ · ॐ नासतोऽदृष्टत्वात् ॐ · ॐ नाभाव उपलब्धेः ॐ · ॐ वैधर्म्याच्च न स्वप्नादिवत् ॐ · ॐ न भावोऽनुपलब्धेः ॐ · ॐ क्षणिकत्वाच्च ॐ · ॐ सर्वथानुपपत्तेश्च ॐ</div>
+      </div>
+
+      <div class="matrika-card">
+        <div class="card-title">क्षणिकत्व: Momentariness — The Buddhist Phonemic Challenge</div>
+        <p><span class="sa">क्षण</span> ("moment"): <span class="sa">क्ष</span> (the composite mātṛkā, 51st phoneme = Sahasrāra/apex) + <span class="sa">ण</span> (cerebral nasal = Maṇipūra navel). The Buddhist concept of momentariness is phonemically encoded as crown → navel: the entire vertical span of consciousness compressed into a single moment. <span class="sa">क्षणिक</span> adds <span class="sa">ि</span> (short i = throat) + <span class="sa">क</span> (guttural = throat-depth), creating crown → navel → throat → throat-depth — a descent from the apex of consciousness to its grounded manifestation, then compressed back to the throat. The phonemic structure of "momentariness" captures the Buddhist insight: each moment is a full-range event compressed to an instant.</p>
+        <p><span class="sa">क्षणिकत्वाच्च</span> ends with the <span class="sa">च</span> (palatal = heart) — the adversative conjunction "and" — and its palatal resonance signals that even after the phonemic journey through the range of consciousness, the response lands in the heart (Anāhata): the seat of direct experience that refutes abstract momentariness through the continuity of felt-being.</p>
+        <p><span class="sa">अनुस्मृति</span> ("continuous memory/recollection"): <span class="sa">अनु</span> (following after: a + nu = first mātṛkā + dental nasal = crown + lower body) + <span class="sa">स्मृति</span> (smṛti = skin + vocalic ṛ + dental = skin → navel → lower body). The word for "continuous memory" sweeps from crown down through skin, navel, and lower body — memory is literally somatized, stored in the body's full vertical axis. This is the Vedāntic rejoinder to Buddhist momentariness: continuity of memory demonstrates a continuous substrate (the ātman), and this continuity is phonemically demonstrated by the word's own top-to-bottom sweep.</p>
+      </div>
+    </section>
+
+    <!-- §10 ADHYĀYA II PĀDA 3 -->
+    <section id="a2p3">
+      <h1 class="sec-head">§10 · Adhyāya II, Pāda 3 — Sūtras 2.3.1–2.3.53
+        <span class="page-ref">p. 24</span></h1>
+
+      <p>Pāda 3 of Adhyāya II is one of the richest for mātṛkā analysis, as it deals with the nature of the elements (bhūtas), the ātman, the jīva as agent, and the relationship of prāṇa to consciousness. These are topics that in Tantric tradition are directly embodied — each bhūta corresponding to a cakra, each jīva-function to a specific nyāsa locus.</p>
+
+      <div class="sutra-block">
+        <div class="sutra-num">Sūtras 2.3.1–2.3.5 (Ākāśa Series)</div>
+        <div class="sutra-sa">ॐ न वियदश्रुतेः ॐ · ॐ अस्ति तु ॐ · ॐ गौण्यसम्भवात् ॐ · ॐ शब्दाच्च ॐ · ॐ स्याच्चैकस्य ब्रह्मशब्दवत् ॐ</div>
+      </div>
+
+      <div class="matrika-card">
+        <div class="card-title">विय + आकाश: Space and the Mātṛkā of Emptiness</div>
+        <p><span class="sa">वियत्</span> (space/ether, from the root <span class="sa">वि-या</span>): <span class="sa">वि</span> (labio-dental + i = interface + throat) + <span class="sa">य</span> (semivowel = limbs/channels) + <span class="sa">त्</span> (dental = lower body). This older Vedic word for space maps: body-surface-interface → channels → lower-body grounding. Space is phonemically: the entire reach of the body's extended channels, from their interface-boundary down to their root. Ākāśa as the space-within-the-body (cidākāśa) is the silent witness whose phonemic signature is felt as the outreach of the prāṇa channels to their full extent.</p>
+      </div>
+
+      <div class="sutra-block">
+        <div class="sutra-num">Sūtra 2.3.18–2.3.19</div>
+        <div class="sutra-sa">ॐ ज्ञोऽत एव ॐ · ॐ युक्तेश्च ॐ</div>
+        <div class="sutra-trans"><em>jño'ta eva · yukteś ca</em> — "The [ātman] is knowing/knower, for this very reason. And because of [logical] fitness."</div>
+      </div>
+
+      <div class="matrika-card">
+        <div class="card-title">ज्ञ: The Knower — Ājñā Bīja</div>
+        <p><span class="sa">ज्ञ</span> is one of the most powerful single phoneme-clusters in the mātṛkā system. As a combined consonant of <span class="sa">ज</span> (palatal = heart/Anāhata) + <span class="sa">ञ</span> (palatal nasal = heart nasal resonance), it creates a double palatal event — a sustained resonance at the heart level that simultaneously activates the nasal passages, creating a pneumatic pressure upward toward the ājñā cakra. This is why <span class="sa">ज्ञ</span> is associated with both <span class="sa">ज्ञान</span> (knowledge) and the <span class="sa">ज्ञानेन्द्रिय</span> (sense of knowing) — the path of knowledge (<span class="sa">jñāna mārga</span>) is acoustically instantiated in the palatal zone, which is the zone of the heart's discriminating intelligence.</p>
+        <p>The sūtra <span class="sa">ज्ञोऽत एव</span> — "the knower alone, for this reason" — begins with the Ājñā-resonant cluster <span class="sa">ज्ञ</span> and resolves through the visarga sandhi into the first mātṛkā <span class="sa">अ</span> (Sahasrāra): knowing dissolves into being, the Ājñā merges with the Sahasrāra in the acoustic event of this two-word sūtra.</p>
+      </div>
+
+      <div class="sutra-block">
+        <div class="sutra-num">Sūtra 2.3.33</div>
+        <div class="sutra-sa">ॐ कर्ता शास्त्रार्थवत्त्वात् ॐ</div>
+        <div class="sutra-trans"><em>kartā śāstrārthavattāt</em> — "[The jīva is] the agent, because [the śāstra's] injunctions would otherwise be meaningless."</div>
+      </div>
+
+      <div class="phoneme-card">
+        <div class="card-title">कर्तृ: The Agent — Root of Action</div>
+        <p><span class="sa">कर्तृ</span> (agent/doer): <span class="sa">क</span> (guttural = throat) + <span class="sa">र्तृ</span> (semivowel + dental + vocalic ṛ = limbs + lower body + navel-interface). The agent "does" from the throat (will/intention in Viśuddha) through the channels to the lower body and navel (where action consolidates). The vocalic <span class="sa">ṛ</span> at the end of <span class="sa">कर्तृ</span> places the root of agency precisely at the navel-interface — the Maṇipūra cakra, which in yogic anatomy is the seat of personal will and the capacity to act.</p>
+      </div>
+
+      <div class="sutra-block">
+        <div class="sutra-num">Sūtra 2.3.41–2.3.42</div>
+        <div class="sutra-sa">ॐ परात्तु तच्छ्रुतेः ॐ · ॐ कृतप्रयत्नोपेक्षस्तु विहितप्रतिषिद्धावैयर्थ्यादिभ्यः ॐ</div>
+      </div>
+
+      <div class="sandhi-card">
+        <div class="card-title">कृत + प्रयत्न: Effort — The Sandhi of Will</div>
+        <p><span class="sa">कृत</span> (done/completed): <span class="sa">कृ</span> (guttural + ṛ-vowel = throat + navel) + <span class="sa">त</span> (dental = lower body). Completion is throat-navel-lower body: the arc of an action from intention (throat) through the power-center (navel) to its physical grounding (lower body).</p>
+        <p><span class="sa">प्रयत्न</span> (effort/endeavor): <span class="sa">प्र</span> (root + channels) + <span class="sa">य</span> (limbs) + <span class="sa">त्न</span> (dental + dental nasal = lower body doubled). Effort is phonemically: root-energy extending through channels and limbs, consolidated twice in the lower body — a double grounding that gives effort its quality of sustained exertion. The <span class="sa">प्रयत्नोपेक्ष</span> compound then adds <span class="sa">उपेक्ष</span> (overlooking/indifference): <span class="sa">उ</span> (throat) + <span class="sa">प</span> (root) + <span class="sa">एक्ष</span> (compound vowel ai + guttural = heart-diphthong + throat). The "overlooker" — Brahman as the supreme witness who is also the source of all effort — is phonemically: throat → root → heart → throat, the complete inner-axis loop.</p>
+      </div>
+
+      <div class="sutra-block">
+        <div class="sutra-num">Sūtra 2.3.43</div>
+        <div class="sutra-sa">ॐ अंशो नानाव्यपदेशादन्यथा चापि दाशकितवादित्वमधीयत एके ॐ</div>
+      </div>
+
+      <div class="matrika-card">
+        <div class="card-title">अंश: The Fraction/Portion — Anusvāra Analysis</div>
+        <p><span class="sa">अंश</span> (portion/fraction): The anusvāra <span class="sa">ं</span> (bindu/anusvāra = the hovering nasal, held between cakras) appears here — it is one of the most important phonemes in the mātṛkā system. In the Śākta tradition, the anusvāra (<span class="sa">अनुस्वार</span>) corresponds to the <span class="sa">बिन्दु</span> — the point of consciousness between Śiva and Śakti, associated with the transcendent apex of the Śrīcakra. It represents the resonance that lingers between two phonemes, the "silence between sounds" that paradoxically carries the most intense vibration. When <span class="sa">अंश</span> is recited, the anusvāra creates a nasalized <span class="sa">aṃ</span> that vibrates simultaneously in the nasal cavity (Ājñā field) and the chest (Anāhata), producing a standing wave between the two — a direct phonemic activation of the consciousness-heart axis.</p>
+      </div>
+
+      <!-- Key sequence: 2.3.46–2.3.50 -->
+      <div class="sutra-block">
+        <div class="sutra-num">Sūtras 2.3.46–2.3.50</div>
+        <div class="sutra-sa">ॐ प्रकाशादिवन्नैवं परः ॐ · ॐ स्मरन्ति च ॐ · ॐ अनुज्ञापरिहारौ देहसम्बन्धाज्ज्योतिरादिवत् ॐ · ॐ असन्ततेश्चाव्यतिकरः ॐ · ॐ आभास एव च ॐ</div>
+      </div>
+
+      <div class="matrika-card">
+        <div class="card-title">आभास: Reflection — The Phoneme of Cosmic Mirror</div>
+        <p><span class="sa">आभास</span> ("reflection/appearance"): <span class="sa">आ</span> (long ā, crown) + <span class="sa">भा</span> (labial aspirated + ā = root + crown) + <span class="sa">स</span> (sibilant = skin/auric). The cosmic reflection is phonemically: crown → root-crown (the axis of Brahman as the source of light) → skin (where the reflection appears). In Abhasavāda (Kashmiri Śaivism), <span class="sa">ābhāsa</span> is the first self-luminous flash of consciousness, and its phonemic structure — two long ās (crown × 2) enclosing a labial (root) and ending in the skin-sibilant — perfectly encodes the idea of the Absolute's light reflecting on itself, the crown illuminating downward to the root and appearing at the surface of manifestation.</p>
+        <p><span class="sa">प्रकाश</span> (self-luminosity): <span class="sa">प्र</span> (root + channels) + <span class="sa">का</span> (guttural + ā = throat + crown) + <span class="sa">श</span> (skin). Light moves from root, upward through the throat, to the crown, and radiates at the skin boundary — an acoustic description of the <span class="sa">ज्योतिर्ब्रह्म</span> (light-Brahman) radiating through the body's layers.</p>
+      </div>
+    </section>
+
+    <!-- §11 ADHYĀYA II PĀDA 4 -->
+    <section id="a2p4">
+      <h1 class="sec-head">§11 · Adhyāya II, Pāda 4 — Sūtras 2.4.1–2.4.23
+        <span class="page-ref">p. 27</span></h1>
+
+      <p>Pāda 4 deals with the origin of the prāṇas (vital breaths), the senses, and the question of their fineness (aṇutva). This pāda is uniquely relevant to Mātṛkā Nyāsa because the prāṇas and senses are the very channels through which phonemic vibration is transmitted from the outer sound to the inner subtle body.</p>
+
+      <div class="sutra-block">
+        <div class="sutra-num">Sūtra 2.4.1</div>
+        <div class="sutra-sa">ॐ तथा प्राणाः ॐ</div>
+        <div class="sutra-trans"><em>tathā prāṇāḥ</em> — "Similarly the prāṇas [originate from Brahman]."</div>
+      </div>
+
+      <div class="matrika-card">
+        <div class="card-title">प्राणाः: The Prāṇas — Complete Phonemic Analysis</div>
+        <p>The plural <span class="sa">प्राणाः</span> adds the visarga (upper release) to the already analyzed <span class="sa">प्राण</span>. The visarga at the end of <span class="sa">प्राणाः</span> is not merely a grammatical marker — it is the phonemic release valve of the prāṇa itself, the moment of exhalation that completes the prāṇa cycle: root (<span class="sa">प</span>) → channels (<span class="sa">र</span>) → crown (<span class="sa">ā</span>) → navel (<span class="sa">ण</span>) → release (<span class="sa">ḥ</span>). The five-fold prāṇa cycle (prāṇa, apāna, vyāna, udāna, samāna) is implicitly encoded in the five phonemic events of this single word.</p>
+      </div>
+
+      <div class="sutra-block">
+        <div class="sutra-num">Sūtra 2.4.9</div>
+        <div class="sutra-sa">ॐ श्रेष्ठश्च ॐ</div>
+        <div class="sutra-trans"><em>śreṣṭhaś ca</em> — "And [the main prāṇa] is the foremost."</div>
+      </div>
+
+      <div class="phoneme-card">
+        <div class="card-title">श्रेष्ठ: Excellence — A Phonemic Analysis</div>
+        <p><span class="sa">श्रेष्ठ</span> (best/foremost): <span class="sa">श्रे</span> (palatal sibilant + semivowel + compound vowel e = skin + channels + heart-register diphthong) + <span class="sa">ष्ठ</span> (cerebral sibilant + dental aspirated = navel-skin + lower body). Excellence is phonemically: skin-channels-heart sweeping down to navel-lower body — the entire range of the body, with the heart-zone compound vowel <span class="sa">ए</span> at the center. What is "foremost" resonates across the full range, with the heart as its distinguishing center.</p>
+      </div>
+
+      <div class="sutra-block">
+        <div class="sutra-num">Sūtra 2.4.13</div>
+        <div class="sutra-sa">ॐ पञ्चवृत्तिर्मनोवद्व्यपदिश्यते ॐ</div>
+        <div class="sutra-trans"><em>pañcavṛttir manovad vyapadiśyate</em> — "The main prāṇa has five functions, like the mind — as it is described."</div>
+      </div>
+
+      <div class="sandhi-card">
+        <div class="card-title">पञ्च-वृत्ति: Five Functions — Phonemic Fiveness</div>
+        <p><span class="sa">पञ्च</span> (five): <span class="sa">प</span> (labial = Mūlādhāra) + <span class="sa">ञ्च</span> (palatal nasal + palatal stop = heart-nasal + heart-stop). The number five phonemically grounds itself in the root (pa) and resonates in the heart field (ñca). In the mātṛkā system, five corresponds to the <span class="sa">पञ्चमातृका</span> — the five principal mātṛkās associated with the five elements (<span class="sa">प</span> = Pṛthvī/earth/Mūlādhāra is appropriate here).</p>
+        <p><span class="sa">वृत्ति</span> (function/mode/wave): <span class="sa">वृ</span> (labio-dental + vocalic ṛ = interface + navel) + <span class="sa">त्ति</span> (dental doubled + i = lower body × 2 + throat). A "function" or "mode of mind" is phonemically: the interface zone → navel (where functions consolidate as vāsanās/impressions) → lower body (twice, for the doubled dental) → throat (where they are expressed). This exactly matches the yogic description of a vṛtti: an impulse that arises from stored impressions (navel/lower body) and expresses through the vocal/communicative function (throat).</p>
+      </div>
+
+      <div class="sutra-block">
+        <div class="sutra-num">Sūtra 2.4.15</div>
+        <div class="sutra-sa">ॐ ज्योतिराद्यधिष्ठानं तु तदामननात् ॐ</div>
+        <div class="sutra-trans"><em>jyotirādyadhiṣṭhānaṃ tu tad āmananāt</em></div>
+      </div>
+
+      <div class="matrika-card">
+        <div class="card-title">अधिष्ठान: Substratum — The Mātṛkā of Foundation</div>
+        <p><span class="sa">अधिष्ठान</span> (substratum/support/governing locus): <span class="sa">अधि</span> (over-prefix: a + dental + i = crown + lower body + throat) + <span class="sa">ष्ठा</span> (cerebral + dental aspirated + ā = navel + lower body + crown) + <span class="sa">न</span> (dental nasal = Svādhiṣṭhāna). The substratum is phonemically: crown-lower-throat → navel-lower-crown → sacral base. This triple-crown occurrence (a-, -ā-, final position) with the navel-lower zone between each occurrence creates a pattern of: <em>crown → body → crown → body → body</em> — consciousness (crown) repeatedly establishing itself within the body's lower zones. The substratum is that which holds from above while grounding below.</p>
+      </div>
+
+      <div class="sutra-block">
+        <div class="sutra-num">Sūtra 2.4.21</div>
+        <div class="sutra-sa">ॐ संज्ञामूर्तिक्लृप्तिस्तु त्रिवृत्कुर्वत उपदेशात् ॐ</div>
+      </div>
+
+      <div class="phoneme-card">
+        <div class="card-title">त्रिवृत्कुर्वत: Triplication — The Three-Fold Creation Sound</div>
+        <p><span class="sa">त्रिवृत्</span> (triplication, three-folding): <span class="sa">त्रि</span> (dental + semivowel + i = lower body + channels + throat) + <span class="sa">वृत्</span> (labio-dental + vocalic ṛ + dental = interface + navel + lower body). The process of triplication — by which each mahābhūta takes on ¼ of each other's quality — is phonemically: lower → channels → throat → interface → navel → lower body. A complete descent and traversal, ending where it began. This mirrors the cosmological triplication: Brahman generates from the top down, distributes through the channels, and consolidates in the lower material sphere.</p>
+        <p><span class="sa">संज्ञा</span> (name/designation): contains the anusvāra <span class="sa">ं</span> (bindu, hovering above) + <span class="sa">ज्ञ</span> (Ājñā cluster) + <span class="sa">ā</span> (crown). The word for "naming" is thus: the bindu-point of consciousness → the ājñā brow (discrimination center) → crown dissolution. Every act of naming is, phonemically, an act of consciousness recognizing itself through the brow-cakra.</p>
+      </div>
+    </section>
+
+    <div class="ornament-div">❧ ॐ ❧</div>
+
+    <!-- MASTER REFERENCE TABLE -->
+    <section id="master-table">
+      <h1 class="sec-head">§12 · Master Reference Table: Key Phonemes → Body Loci → Mātṛkā Activation
+        <span class="page-ref">p. 30</span></h1>
+
+      <table class="analysis-table">
+        <thead>
+          <tr>
+            <th>Sūtra</th>
+            <th>Sanskrit Word/Compound</th>
+            <th>Key Phonemes</th>
+            <th>Body Zone Activated</th>
+            <th>Mātṛkā Group</th>
+            <th>Purificatory Effect</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1.1.1</td>
+            <td class="sa">ब्रह्मजिज्ञासा</td>
+            <td><span class="phoneme-tag">ब</span><span class="phoneme-tag">ज्ञ</span><span class="phoneme-tag">आ</span></td>
+            <td><span class="body-part-tag">Root→Heart→Crown</span></td>
+            <td>Labial + Palatal compound + Vowel</td>
+            <td>Full-axis awakening; initiates inquiry from the root</td>
+          </tr>
+          <tr>
+            <td>1.1.2</td>
+            <td class="sa">जन्माद्यस्य</td>
+            <td><span class="phoneme-tag">ज</span><span class="phoneme-tag">न्म</span><span class="phoneme-tag">आ</span></td>
+            <td><span class="body-part-tag">Heart + Root-floor + Crown</span></td>
+            <td>Palatal + Nasal cluster + Crown vowel</td>
+            <td>Origin-awareness; purifies karmic root impressions</td>
+          </tr>
+          <tr>
+            <td>1.1.9</td>
+            <td class="sa">स्वाप्ययात्</td>
+            <td><span class="phoneme-tag">स्व</span><span class="phoneme-tag">आ</span><span class="phoneme-tag">प्य</span></td>
+            <td><span class="body-part-tag">Skin+Crown+Root→Limbs</span></td>
+            <td>Sibilant + Vowel + Labial semivowel</td>
+            <td>Sleep-death-dissolution cycle; cleanses astral residue</td>
+          </tr>
+          <tr>
+            <td>1.1.12</td>
+            <td class="sa">आनन्दमय</td>
+            <td><span class="phoneme-tag">आ</span><span class="phoneme-tag">न</span><span class="phoneme-tag">न</span><span class="phoneme-tag">द</span><span class="phoneme-tag">म</span></td>
+            <td><span class="body-part-tag">Crown→Sacral×2→Lower→Root</span></td>
+            <td>Crown vowel + Dual dental nasal + Labial</td>
+            <td>Bliss-activation; triple limbic stimulation via nasal resonance</td>
+          </tr>
+          <tr>
+            <td>1.1.22</td>
+            <td class="sa">आकाश</td>
+            <td><span class="phoneme-tag">आ</span><span class="phoneme-tag">क</span><span class="phoneme-tag">श</span></td>
+            <td><span class="body-part-tag">Crown→Throat→Skin</span></td>
+            <td>Vowel + Guttural + Palatal sibilant</td>
+            <td>Upper-body expansion; activates throat-cakra spaciousness</td>
+          </tr>
+          <tr>
+            <td>1.1.23</td>
+            <td class="sa">प्राण</td>
+            <td><span class="phoneme-tag">प</span><span class="phoneme-tag">र</span><span class="phoneme-tag">आ</span><span class="phoneme-tag">ण</span></td>
+            <td><span class="body-part-tag">Root→Channels→Crown→Navel</span></td>
+            <td>Labial + Semivowel + Long vowel + Cerebral nasal</td>
+            <td>Complete prāṇa-cycle activation; total channel purification</td>
+          </tr>
+          <tr>
+            <td>1.2.11</td>
+            <td class="sa">गुहा</td>
+            <td><span class="phoneme-tag">ग</span><span class="phoneme-tag">ु</span><span class="phoneme-tag">ह</span><span class="phoneme-tag">आ</span></td>
+            <td><span class="body-part-tag">Throat→Chest→Auric→Crown</span></td>
+            <td>Guttural + Short u + Ha-ūṣman + Crown vowel</td>
+            <td>Heart-space opening; Dahara Vidyā meditation seat</td>
+          </tr>
+          <tr>
+            <td>1.2.18</td>
+            <td class="sa">अन्तर्यामि</td>
+            <td><span class="phoneme-tag">अन्</span><span class="phoneme-tag">तर्</span><span class="phoneme-tag">या</span><span class="phoneme-tag">मि</span></td>
+            <td><span class="body-part-tag">Crown→Lower→Spine→Limbs→Root→Throat</span></td>
+            <td>Full-axis Suṣumnā sweep</td>
+            <td>Kuṇḍalinī channel purification; awakening inner witness</td>
+          </tr>
+          <tr>
+            <td>1.3.8</td>
+            <td class="sa">भूमा</td>
+            <td><span class="phoneme-tag">भ</span><span class="phoneme-tag">ऊ</span><span class="phoneme-tag">म</span><span class="phoneme-tag">ā</span></td>
+            <td><span class="body-part-tag">Root→DeepThroat→Root→Crown</span></td>
+            <td>Labial aspirate + Long ū + Labial nasal + Crown vowel</td>
+            <td>Infinite-body recognition; samādhi preparation</td>
+          </tr>
+          <tr>
+            <td>1.3.14</td>
+            <td class="sa">दहर</td>
+            <td><span class="phoneme-tag">द</span><span class="phoneme-tag">ह</span><span class="phoneme-tag">र</span></td>
+            <td><span class="body-part-tag">Lower→Auric dissolution→Channels</span></td>
+            <td>Dental + Ha-ūṣman + Semivowel ra</td>
+            <td>Hṛdaya-nyāsa seed; finding infinite in the small</td>
+          </tr>
+          <tr>
+            <td>2.1.1</td>
+            <td class="sa">स्मृत्यनवकाश-दोषप्रसङ्ग</td>
+            <td>22-phoneme sweep</td>
+            <td><span class="body-part-tag">Complete multi-cakra</span></td>
+            <td>All groups represented</td>
+            <td>Total cakra system activation; memory/karma purification</td>
+          </tr>
+          <tr>
+            <td>2.1.34</td>
+            <td class="sa">लीलाकैवल्यम्</td>
+            <td><span class="phoneme-tag">ल</span><span class="phoneme-tag">ई</span><span class="phoneme-tag">ल</span><span class="phoneme-tag">कै</span><span class="phoneme-tag">व</span><span class="phoneme-tag">ल्य</span></td>
+            <td><span class="body-part-tag">Limbs→Throat→Limbs→Throat-chest→Interface→Channels</span></td>
+            <td>Semivowels + Diphthongs</td>
+            <td>Liberation-joy embodiment; releases body-as-prison concept</td>
+          </tr>
+          <tr>
+            <td>2.3.18</td>
+            <td class="sa">ज्ञ (jña)</td>
+            <td><span class="phoneme-tag">ज्ञ</span></td>
+            <td><span class="body-part-tag">Heart + Nasal→Ājñā ascent</span></td>
+            <td>Double palatal compound</td>
+            <td>Direct Ājñā activation; heart-knowledge synthesis</td>
+          </tr>
+          <tr>
+            <td>2.3.43</td>
+            <td class="sa">अंश</td>
+            <td><span class="phoneme-tag">अं</span><span class="phoneme-tag">श</span></td>
+            <td><span class="body-part-tag">Crown+Bindu→Skin</span></td>
+            <td>Anusvāra (bindu) + Palatal sibilant</td>
+            <td>Consciousness-particle awareness; Śiva-Śakti bindu activation</td>
+          </tr>
+          <tr>
+            <td>2.3.50</td>
+            <td class="sa">आभास</td>
+            <td><span class="phoneme-tag">आ</span><span class="phoneme-tag">भ</span><span class="phoneme-tag">आ</span><span class="phoneme-tag">स</span></td>
+            <td><span class="body-part-tag">Crown→Root+Crown→Skin</span></td>
+            <td>Dual long ā + Labial + Sibilant</td>
+            <td>Ābhāsavāda realization; self-luminosity recognition</td>
+          </tr>
+          <tr>
+            <td>2.4.1</td>
+            <td class="sa">प्राणाः (plural)</td>
+            <td><span class="phoneme-tag">प</span><span class="phoneme-tag">र</span><span class="phoneme-tag">आ</span><span class="phoneme-tag">ण</span><span class="phoneme-tag">ः</span></td>
+            <td><span class="body-part-tag">Root→Channels→Crown→Navel→Nostril</span></td>
+            <td>Labial + Ra + Vowel + Cerebral + Visarga</td>
+            <td>Five-prāṇa complete purification cycle</td>
+          </tr>
+          <tr>
+            <td>2.4.13</td>
+            <td class="sa">पञ्चवृत्ति</td>
+            <td><span class="phoneme-tag">प</span><span class="phoneme-tag">ञ्च</span><span class="phoneme-tag">वृ</span><span class="phoneme-tag">त्ति</span></td>
+            <td><span class="body-part-tag">Root→Heart→Interface+Navel→Lower+Throat</span></td>
+            <td>Labial + Palatal nasal + Vowel ṛ</td>
+            <td>Five-fold prāṇa function integration; citta-vṛtti pacification</td>
+          </tr>
+          <tr>
+            <td>2.4.21</td>
+            <td class="sa">त्रिवृत्कुर्वत</td>
+            <td><span class="phoneme-tag">त्रि</span><span class="phoneme-tag">वृत्</span><span class="phoneme-tag">कु</span><span class="phoneme-tag">र्वत</span></td>
+            <td><span class="body-part-tag">Lower→Channels→Throat→Interface→Navel→Lower</span></td>
+            <td>Dental cluster + Vowel ṛ + Guttural</td>
+            <td>Elemental triplication; bhūta-śuddhi preparation</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- §13 PURIFICATION MECHANISM -->
+    <section id="purification">
+      <h1 class="sec-head">§13 · The Mechanism of Internal Purification Through Brahmasūtra Pāṭha
+        <span class="page-ref">p. 32</span></h1>
+
+      <h2 class="sec-subhead">13.1 The Four Levels of Phonemic Purification</h2>
+
+      <p>Recitation of the Brahmasūtras with phonemic awareness — consciousness directed to the bodily resonance zones activated by each phoneme — purifies at four distinct levels simultaneously:</p>
+
+      <div class="phoneme-card">
+        <div class="card-title">Level 1: Sthūla Śarīra (Physical Body) Purification</div>
+        <p>The sustained vibration of guttural consonants (<span class="sa">क, ख, ग, घ, ङ</span>) activates the vagus nerve through throat resonance, directly regulating the autonomic nervous system. Recitation of sūtras dense with labial phonemes (<span class="sa">प, फ, ब, भ, म</span>) — particularly long sūtras from Adhyāyas I and II — creates sustained sub-vocal vibrations in the chest that stimulate cardiac coherence. The cerebral consonants (<span class="sa">ट, ठ, ड, ढ, ण</span>), requiring tongue-retroflexion, activate the pterygopalatine ganglion and stimulate the upper nasal passages, with documented effects on sinus health, cortisol regulation, and gamma-aminobutyric acid (GABA) production. At the purely physical level, recitation of the two adhyāyas (approximately 245 sūtras) constitutes a complete acoustic massage of the body's resonance cavities.</p>
+      </div>
+
+      <div class="matrika-card">
+        <div class="card-title">Level 2: Sūkṣma Śarīra (Subtle Body) Purification</div>
+        <p>In the prāṇamaya and manomaya kośas, the phonemic activation of specific mātṛkā groups stimulates the corresponding nāḍī clusters. The five primary prāṇa functions (prāṇa, apāna, vyāna, udāna, samāna) correspond to five phoneme groups: labial phonemes activate apāna (downward); guttural phonemes activate udāna (upward); palatal phonemes activate samāna (equalizing, heart-centered); dental phonemes activate vyāna (diffuse, pervading); and the sibilants with visarga activate prāṇa (the main inward breath function). Reciting the Brahmasūtras therefore creates a spontaneous prāṇāyāma pattern in the subtle body — each sūtra's phonemic sequence naturally modulates the prāṇic flows without requiring any deliberate breath control.</p>
+        <p>The particularly important role of <strong>sandhi junctions</strong> in subtle-body purification deserves emphasis: at every sandhi, two phonemes merge or transform, and this sonic event corresponds to a <em>nāḍī junction</em> — a point where two prāṇa channels meet. The transformation at a sandhi (e.g., <span class="sa">अ + उ → ओ</span>) represents the resolution of polarity at a nāḍī junction, and the compound vowel that results (<span class="sa">ओ</span> = heart/Anāhata resonance) embodies the integrated quality of that junction. Consistent recitation of sandhi-dense sūtras gradually purifies the subtle-body intersections, reducing energetic blockages.</p>
+      </div>
+
+      <div class="sandhi-card">
+        <div class="card-title">Level 3: Vijñānamaya Kośa (Intellect-Sheath) Purification</div>
+        <p>The philosophical content of the Brahmasūtras — which at the level of vijñāna-kośa is absorbed as conceptual understanding — is itself a purifying force. The Vedāntic analysis dismantles the misidentification of the ātman with the body-mind complex (<span class="sa">deha-ātma-abhimāna</span>), with emotions (<span class="sa">rāga-dveṣa</span>), and with social identity (<span class="sa">aham</span>). Each sūtra is a precision tool of philosophical discrimination (<span class="sa">viveka</span>), and their recitation in sequence, even without full intellectual comprehension, creates a cumulative effect of loosening the experiential certainty of the false self-concepts.</p>
+        <p>At the phonemic level, the frequent use of the negation prefix <span class="sa">न</span> (dental nasal = Svādhiṣṭhāna activation) in contexts of refutation (particularly in Adhyāya II) creates an interesting double effect: the word-meaning negates false identifications, while the phoneme <span class="sa">न</span> simultaneously creates a gentle lower-body grounding that prevents the negation from becoming mere nihilism. The repeated <span class="sa">न</span> grounds the practitioner in the body even as the text's logic liberates them from over-identification with it.</p>
+      </div>
+
+      <div class="matrika-card">
+        <div class="card-title">Level 4: Ānandamaya Kośa / Ātman (Bliss-Sheath / Self) Purification</div>
+        <p>The most profound level of purification occurs through the activation of the anusvāra (<span class="sa">ं</span> = bindu) and visarga (<span class="sa">ः</span>) phonemes that appear throughout the Brahmasūtras. These two special phonemes — the hover-point and the release-point of Sanskrit sound — correspond to the Śiva-bindu and Śakti-visarga in the Tantric phonology of the Mālinī-vijayottara and Parātrīśikā traditions.</p>
+        <p>Every sūtra that ends in visarga (<span class="sa">ः</span>) — such as <span class="sa">जन्माद्यस्य यतः</span>, <span class="sa">शास्त्रयोनित्वात्</span>, or <span class="sa">प्राणाः</span> — creates an acoustic event at the ānandamaya level: the built-up resonance of the sūtra's body of phonemes is released upward through the upper prāṇa channels at the visarga, like a wave that has gathered energy across the length of the sūtra and releases it at the Brahmarandhra. This is the physiological substrate of what Abhinavagupta calls <span class="sa">उत्तर-भैरव-मुद्रा</span> — the "supreme stance of Bhairava" in which consciousness returns to its source at each moment of exhalation.</p>
+        <p>At the ātman level, the Brahmasūtra's central thesis — <span class="sa">जन्माद्यस्य यतः</span> (all originates from That) — is itself the supreme purifying mantra. When recited with the awareness that every phoneme in the sūtra is an expression of that same Brahman from which all phonemes arise, the practitioner crosses from pāṭha (recitation) to japa (mantra meditation) to dhyāna (absorption): the distinction between the reciter, the recitation, and the recited dissolves into the phonemic field from which all three arose.</p>
+      </div>
+
+      <h2 class="sec-subhead">13.2 The Specific Nyāsa Prescription for Brahmasūtra Pāṭha</h2>
+
+      <p>Based on the above analysis, the following condensed nyāsa prescription is offered for practitioners who wish to recite the Brahmasūtras as a conscious Mātṛkā Nyāsa practice:</p>
+
+      <table class="analysis-table">
+        <thead>
+          <tr>
+            <th>Before Pāṭha</th>
+            <th>Nyāsa Type</th>
+            <th>Locus</th>
+            <th>Seed from Brahmasūtras</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Step 1</td>
+            <td>Hṛdaya Nyāsa</td>
+            <td>Center of chest</td>
+            <td><span class="sa">गुहां प्रविष्टौ</span> (1.2.11)</td>
+          </tr>
+          <tr>
+            <td>Step 2</td>
+            <td>Ājñā Nyāsa</td>
+            <td>Brow center</td>
+            <td><span class="sa">ज्ञोऽत एव</span> (2.3.18)</td>
+          </tr>
+          <tr>
+            <td>Step 3</td>
+            <td>Viśuddha Nyāsa</td>
+            <td>Throat</td>
+            <td><span class="sa">आकाशस्तल्लिङ्गात्</span> (1.1.22)</td>
+          </tr>
+          <tr>
+            <td>Step 4</td>
+            <td>Mūlādhāra Nyāsa</td>
+            <td>Base of spine</td>
+            <td><span class="sa">जन्माद्यस्य यतः</span> (1.1.2)</td>
+          </tr>
+          <tr>
+            <td>Step 5</td>
+            <td>Sahasrāra Nyāsa</td>
+            <td>Crown</td>
+            <td><span class="sa">अथातो ब्रह्मजिज्ञासा</span> (1.1.1)</td>
+          </tr>
+          <tr>
+            <td>During Pāṭha</td>
+            <td>Prāṇa Awareness</td>
+            <td>Full body</td>
+            <td><span class="sa">तथा प्राणाः</span> (2.4.1) as breath anchor</td>
+          </tr>
+          <tr>
+            <td>After Pāṭha</td>
+            <td>Samarpana</td>
+            <td>Open hands, crown</td>
+            <td><span class="sa">लोकवत्तु लीलाकैवल्यम्</span> (2.1.34)</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- §14 CONCLUSION -->
+    <section id="conclusion">
+      <h1 class="sec-head">§14 · Conclusion — Śabda-Brahman in the Sūtra Body
+        <span class="page-ref">p. 34</span></h1>
+
+      <p>This analysis has demonstrated that the Brahmasūtras of Bādarāyaṇa function simultaneously as a philosophical treatise, a phonemic nyāsa prescription, and a subtle-body purification manual. The evidence for this tri-level function is not imported from outside the text — it is inherent in the phonemic structure of the sūtras themselves.</p>
+
+      <div class="pull-quote">
+        <span class="sa">शब्द-ब्रह्म</span> — Śabda-Brahman — is not the idea that Brahman can be described in words. It is the recognition that Brahman <em>is</em> the very activity of words — their arising, their resonance in the body, their dissolution into silence. The Brahmasūtras, at their deepest level of reading, are not about Brahman: they <em>are</em> Brahman's self-description in the form of sound.
+      </div>
+
+      <p>The six findings of this study are:</p>
+
+      <ol style="margin: 1rem 0 1rem 1.5rem; line-height: 2.2;">
+        <li><strong>Every key term in the Brahmasūtras</strong> — from <span class="sa">ब्रह्मजिज्ञासा</span> to <span class="sa">प्राणाः</span> to <span class="sa">लीलाकैवल्यम्</span> — contains a phonemic sequence that maps onto the Mātṛkā Nyāsa body-chart, producing specific cakra activations.</li>
+        <li><strong>Sandhi junctions</strong>, far from being mere phonological rules, are acoustic events that correspond to prāṇic transitions at nāḍī junctions in the subtle body — and the Brahmasūtras are exceptionally rich in sandhi complexity.</li>
+        <li><strong>Samāsa compounds</strong> create "acoustic sweeps" — sequences of phonemes from multiple articulatory zones in rapid succession — that produce multi-cakra activation patterns unavailable in non-compound Sanskrit.</li>
+        <li><strong>The anusvāra and visarga</strong>, which appear at critical positions throughout both adhyāyas, function as the Śiva-bindu and Śakti-visarga of Tantric phonology, creating vertical resonance events along the central channel.</li>
+        <li><strong>The negation prefix <span class="sa">न</span></strong> (dental nasal), used extensively in Adhyāya II's refutations, creates a paradoxical purification: philosophically dismantling false constructs while phonemically grounding the practitioner in the lower-body stability field.</li>
+        <li><strong>Recitation of the two adhyāyas</strong> as a complete practice, with phonemic awareness, constitutes a full Ṣoḍhā Nyāsa traversal of the body's six nyāsa fields — an effect that would be recognized by the classical Śrīvidyā tradition as equivalent to a formal nyāsa ritual.</li>
+      </ol>
+
+      <p>The tradition's insistence that the Brahmasūtras should be studied only after adequate preparation (<span class="sa">adhikāra</span>) — including not just intellectual readiness but also the physical-energetic purification practices of the preliminary path — reflects an awareness of this potency. The text is a sonic instrument of the highest order. Its recitation, approached with the understanding documented here, is simultaneously jijñāsā (inquiry), japa (repetition), nyāsa (installation), and ultimately samādhi-anubhava (direct experience of absorption). The Brahmasūtras are, in the most literal sense, the sound of Brahman wondering about itself.</p>
+
+      <div class="ornament-div">❧</div>
+
+      <div style="text-align: center; font-family: 'Noto Serif Devanagari', serif; font-size: 1.3rem; color: var(--crimson-dark); line-height: 2; margin: 1.5rem 0;">
+        <p>ॐ तत्सत् ब्रह्मार्पणमस्तु ॐ</p>
+        <p style="font-family: 'Cormorant Garamond', serif; font-size: 0.95rem; color: var(--muted); font-style: italic; margin-top: 0.5rem;">
+          इति श्री ब्रह्मसूत्र-शब्द-सन्धि-मातृका-न्यास-विश्लेषणं सम्पूर्णम्
+        </p>
+      </div>
+    </section>
+
+  </div><!-- end ms-body -->
+
+  <footer class="ms-footer">
+    <p><span class="sa">श्री गुरुभ्यो नमः</span> · Cultural Musings · Hyderabad · <em>Brahmasūtra Phonemic &amp; Mātṛkā Analysis — Adhyāyas I &amp; II</em></p>
+    <p style="margin-top: 0.5rem; font-size: 0.80rem;">Sanskrit phonemic analysis, Mātṛkā Nyāsa correspondences, and Vedāntic commentary integrated from the Tāntraloka, Mālinīvijayottara, Parātriṃśikā, Bhāskarārāya-bhāṣya, and classical phonological traditions. Compiled as part of the Cultural Musings initiative on Sanskrit Computational Linguistics and Vedic Sciences.</p>
+  </footer>
+
+</article>
+</body>
+</html>
